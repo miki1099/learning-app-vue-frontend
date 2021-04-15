@@ -1,7 +1,7 @@
 <template>
 
 <header>
-    <img src="~@\assets\menu.svg" id="side-menu"/>
+    <the-burger id="side-menu"></the-burger>
     <div id="user-side">
         <div id="welcome-user">Witaj Login</div>
         <button>Wyloguj</button>
@@ -10,9 +10,12 @@
 </template>
 
 <script>
+import TheBurger from '../menu/TheBurger.vue';
 
 export default{
-    
+    components: {
+        TheBurger
+    }
 }
 </script>
 
@@ -25,8 +28,8 @@ header {
 
 #side-menu {
     float: left;
-    width: 4%;
-    height: 4%;
+    width: 10%;
+    height: 10%;
 }
 
 #user-side {
