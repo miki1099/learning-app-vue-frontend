@@ -13,4 +13,10 @@
   max-width: 65%;
   background-color: #3C3C3C;
 }
+
+@media (max-width: 600px) {
+  #card {
+    max-width: 95%;
+  }
+}
 </style>

@@ -38,7 +38,7 @@ header {
 }
 
 #welcome-user {
-    font-size: 2vw;
+    font-size: calc(15px + 1vw);
     top: 5%;
     text-align: center;
     display: inline-block;
@@ -55,6 +55,6 @@ header {
     min-height: 30px;
     /* max-height: 90px; */
     height: 5%;
-    font-size: 1.2vw;
+    font-size: calc(5px + 0.8vw);
  }
 </style>
