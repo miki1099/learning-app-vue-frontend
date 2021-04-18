@@ -3,7 +3,7 @@
         <div class="sidebar-backdrop" @click="closeSidebarPanel" :class="{ 'show-backdrop': isPanelOpen}"></div>
             <div :class="{ open: isPanelOpen}"
                  class="sidebar-panel">
-                 <slot></slot>
+                 <slot @click="closeSidebarPanel"></slot>
                 <div @click="closeSidebarPanel" class="exit-button">
                     <svg width="25" height="25" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0)">

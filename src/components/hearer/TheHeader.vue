@@ -3,8 +3,8 @@
 <header>
     <the-burger id="side-menu"></the-burger>
     <div id="user-side">
-        <div id="welcome-user">Witaj Login</div>
-        <button>Wyloguj</button>
+        <div id="welcome-user" v-if="!!userLogin">Witaj {{ userLogin }}!</div>
+        <button @click="loginLogout">{{!!!userLogin? 'Zaloguj' : 'Wyloguj'}}</button>
     </div>
 </header>
 </template>
@@ -15,6 +15,26 @@ import TheBurger from '../menu/TheBurger.vue';
 export default{
     components: {
         TheBurger
+    },
+    computed: {
+        userLogin() {
+            return this.$store.getters.getLogin;
+        },
+    },
+    methods: {
+        loginLogout() {
+            if(this.$store.getters.getLogin === null){
+                this.goToLogin();
+            } else {
+                this.logout();
+            }
+        },
+        goToLogin() {
+            this.$router.push('/login');
+        },
+        logout() {
+            this.$store.commit('logout');
+        }
     }
 }
 </script>
