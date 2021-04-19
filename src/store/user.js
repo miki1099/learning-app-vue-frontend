@@ -92,7 +92,9 @@ export default {
 
             const responseData = await response.json();
             if(!response.ok) {
-                return
+                let error = new Error('Zmiana danych niepowiodła się');
+                
+                throw error;
             }
             
             console.log(responseData);
