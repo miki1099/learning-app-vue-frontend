@@ -3,7 +3,8 @@ import HelloWorld from './components/HelloWorld.vue';
 import UserAuth from './pages/auth/UserAuth.vue'
 import UserCreate from './pages/auth/UserCreate.vue'
 import NotFound from './pages/notFound/NotFound.vue'
-import UserInfo from './pages/userInfo/UserInfo.vue'
+import UserInfo from './pages/user/UserInfo.vue'
+import UpdateUserData from './pages/user/UpdateUserData.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -12,7 +13,7 @@ const router = createRouter({
         { path: '/home', component: HelloWorld},
         { path: '/learn', component: null},
         { path: '/user/me', component: UserInfo},
-        { path: '/user/me/changeDetails', component: null},
+        { path: '/user/me/changeDetails', component: UpdateUserData},
         { path: '/user/me/changePassword', component: null},
         { path: '/user/me/orders', component: null},
         { path: '/achivements', component: null},

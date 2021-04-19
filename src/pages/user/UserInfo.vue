@@ -38,6 +38,15 @@
                 </div>
             </div>
         </div>
+        <div class="profile-user-info" v-if="userFromStore.phone !== null">
+            <div class="profile-info-row">
+                <div class="profile-info-name"> Telefon </div>
+
+                <div class="profile-info-value">
+                    <span> {{ userFromStore.phone }} </span>
+                </div>
+            </div>
+        </div>
         <div class="profile-user-info" v-if="userFromStore.country !== null && userFromStore.street !== null && userFromStore.city !== null">
             <div class="profile-info-row">
                 <div class="profile-info-name"> Adres </div>
