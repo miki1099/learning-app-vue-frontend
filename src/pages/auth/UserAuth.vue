@@ -20,7 +20,7 @@
             </button>
             <br>
             <button id="sign-up">
-                <router-link to="/sign-up">
+                <router-link to="/register">
                     Zarejestruj się
                 </router-link>
             </button>

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HelloWorld from './components/HelloWorld.vue';
 import UserAuth from './pages/auth/UserAuth.vue'
+import UserCreate from './pages/auth/UserCreate.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -13,6 +14,7 @@ const router = createRouter({
         { path: '/test', component: null},
         { path: '/curiocity', component: null},
         { path: '/login', component: UserAuth},
+        { path: '/register', component: UserCreate},
         { path: '/:notFound(.*)', component: null}
     ]
 });

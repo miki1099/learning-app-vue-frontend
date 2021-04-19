@@ -40,7 +40,7 @@ export default {
             
 
             if(!response.ok) {
-                let error = new Error('Logowanie nie powiodło się. Spróbuj później');
+                let error = new Error(responseData.message || 'Logowanie nie powiodło się. Spróbuj później');
                 if(response.status == 401) {
                     error = new Error('Dane logowania są niepoprawne!');
                 }
@@ -56,8 +56,20 @@ export default {
             })
         },
         async signup(context, payload) {
+            console.log(payload.address);
+            console.log(payload.email);
+            console.log(payload.lastName);
+            console.log(payload.login);
+            console.log(payload.name);
+            console.log(payload.password);
+            console.log(payload.phone);
+            let headers = new Headers();
+            headers.append('Content-Type', 'application/json');
+            headers.append('Accept', 'application/json');
             const response = await fetch('https://learning-app-stars.herokuapp.com/register', {
                 method: 'POST',
+                
+                headers: headers,
                 body: JSON.stringify({
                     address: payload.address,
                     email: payload.email,
@@ -73,7 +85,8 @@ export default {
             const responseData = await response.json();
 
             if(!response.ok) {
-                const error = new Error(responseData.message);
+                let error = new Error(responseData.message || 'Rejestrowanie nie powiodło się. Spróbuj później');
+                
                 throw error;
             }
         }
