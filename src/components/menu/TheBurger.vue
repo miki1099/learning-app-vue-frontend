@@ -5,6 +5,7 @@
         <span class="hidden">Toggle menu</span>
         <span class="burger-bar burger-bar--1"></span>
         <span class="burger-bar burger-bar--2"></span>
+        <span class="hidden">Toggle menu</span>
         <span class="burger-bar burger-bar--3"></span>
       </button>
     </slot>
@@ -28,6 +29,7 @@ export default {
 <style>
 .hidden {
   visibility: hidden;
+  height: 50%;
 }
 
 button {
