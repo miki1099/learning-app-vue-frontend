@@ -94,6 +94,9 @@ export default {
     getters: {
         getLogin: state => {
             return state.login;
+        },
+        getToken: state => {
+            return state.token;
         }
     }
 }

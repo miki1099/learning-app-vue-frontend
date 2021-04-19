@@ -8,10 +8,12 @@ import BaseSpinner from './components/atoms/BaseSpinner.vue';
 import BaseDialog from './components/UI/BaseDialog.vue';
 
 import authModule from './store/auth.js'
+import userModule from './store/user.js'
 
 const store = createStore({
     modules: {
       auth: authModule,
+      user: userModule
     },
     state() {
       return {

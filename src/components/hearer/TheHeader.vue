@@ -3,7 +3,7 @@
 <header>
     <the-burger id="side-menu"></the-burger>
     <div id="user-side">
-        <div id="welcome-user" v-if="!!userLogin">Witaj {{ userLogin }}!</div>
+        <div id="welcome-user" v-if="!!userLogin" @click="goToUserDetails">Witaj {{ userLogin }}!</div>
         <button @click="loginLogout">{{!!!userLogin? 'Zaloguj' : 'Wyloguj'}}</button>
     </div>
 </header>
@@ -34,6 +34,11 @@ export default{
         },
         logout() {
             this.$store.commit('logout');
+            this.$store.commit('logoutUser');
+            this.$router.push('/home');
+        },
+        goToUserDetails() {
+            this.$router.push('/user/me');
         }
     }
 }
@@ -63,6 +68,7 @@ header {
     text-align: center;
     display: inline-block;
     margin: 0 5%;
+    cursor: pointer;
 }
  button {
     display: inline-block;
