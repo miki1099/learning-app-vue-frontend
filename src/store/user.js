@@ -29,7 +29,12 @@ export default {
 
             const responseData = await response.json();
             if(!response.ok) {
-                return
+                let error = new Error(responseData.message || 'Logowanie nie powiodło się. Spróbuj później');
+                if(response.status == 401) {
+                    error = new Error('Twoja sesja wygasła zaloguj się ponownie');
+                }
+                
+                throw error;
             }
             
             console.log(responseData);

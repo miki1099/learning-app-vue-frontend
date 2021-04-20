@@ -5,6 +5,7 @@ import UserCreate from './pages/auth/UserCreate.vue'
 import NotFound from './pages/notFound/NotFound.vue'
 import UserInfo from './pages/user/UserInfo.vue'
 import UpdateUserData from './pages/user/UpdateUserData.vue'
+import ChangePassword from './pages/user/ChangePassword.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -14,7 +15,7 @@ const router = createRouter({
         { path: '/learn', component: null},
         { path: '/user/me', component: UserInfo},
         { path: '/user/me/changeDetails', component: UpdateUserData},
-        { path: '/user/me/changePassword', component: null},
+        { path: '/user/me/changePassword', component: ChangePassword},
         { path: '/user/me/orders', component: null},
         { path: '/achivements', component: null},
         { path: '/test', component: null},

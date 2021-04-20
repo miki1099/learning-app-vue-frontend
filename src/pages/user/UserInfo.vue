@@ -1,7 +1,10 @@
 <template>
+    <base-dialog :show="!!error" title="Error" @close="handleError">
+        <p>{{ error }}</p>
+    </base-dialog>
     <h1>Dane użytkownika</h1>
-    <base-spinner v-if="isLoading"/>
-    <div v-if="!isLoading">
+    <base-spinner v-if="isLoading"></base-spinner>
+    <div v-if="!isLoading && !!!error">
         <div class="profile-user-info">
             <div class="profile-info-row">
                 <div class="profile-info-name"> Login </div>
@@ -91,6 +94,7 @@ export default {
             street: null,
             homeNumber: null,
             isLoading: false,
+            error: null,
         }
     },
     created() {
@@ -105,10 +109,22 @@ export default {
         }
     },
     methods: {
-        laodUser() {
+        async laodUser() {
             this.isLoading = true;
-            this.$store.dispatch('saveUser');
+            if(this.$store.getters.getLogin === null) {
+                this.error = 'Nie jesteś zalogowany!'
+                this.isLoading = false;
+                return;
+            }
+            try{
+                await this.$store.dispatch('saveUser');
+            } catch(ex) {
+                this.error = ex.message;
+            }
             this.isLoading = false;
+        },
+        handleError() {
+            this.$router.push('/login');
         }
     }
 }
@@ -116,6 +132,9 @@ export default {
 
 <style scoped>
 
+p {
+  color: #E9E9E9;
+}
 .buttons {
     display: flex;
     justify-content: space-around;
