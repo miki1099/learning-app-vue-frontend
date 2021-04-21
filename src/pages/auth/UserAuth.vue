@@ -75,6 +75,7 @@ export default {
 <style scoped>
 p {
     color: rgb(255, 0, 21);
+    font-size: 25px;
 }
 
 a {
@@ -184,6 +185,9 @@ button {
     .login-box .user-box input:focus ~ label,
     .login-box .user-box input:valid ~ label {
         left: 0;
+    }
+    p {
+    font-size: 20px;
     }
 }
 </style>

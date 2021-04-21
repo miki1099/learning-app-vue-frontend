@@ -13,7 +13,7 @@
         </section>
         <menu v-if="!fixed">
           <slot name="actions">
-            <base-button @click="tryClose">Close</base-button>
+            <base-button @click="tryClose">ZAMKNIJ</base-button>
           </slot>
         </menu>
       </dialog>
@@ -77,7 +77,7 @@ dialog {
 }
 
 header {
-  background-color: #790606;
+  background-color: #FD1C03;
   color: #E9E9E9;
   width: 100%;
   padding: 1rem;

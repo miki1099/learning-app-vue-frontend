@@ -1,4 +1,12 @@
 
+function handleErrors(response) {
+    if(response.status == 401) {
+        throw new Error('Dane logowania są niepoprawne!');
+    } else {
+        return response;
+    }
+}
+
 export default {
     state() {
         return {
@@ -28,32 +36,30 @@ export default {
 
             headers.append('Content-Type', 'application/json');
             headers.append('Accept', 'application/json');
-
-            const response = await fetch('https://learning-app-stars.herokuapp.com/login', {
-                method: 'POST',
-                headers: headers,
-                body: JSON.stringify({
-                    login: payload.login,
-                    password: payload.password
+                const response = await fetch('https://learning-app-stars.herokuapp.com/login', {
+                    method: 'POST',
+                    headers: headers,
+                    body: JSON.stringify({
+                        login: payload.login,
+                        password: payload.password
+                    })
                 })
-            });
-            
-
-            if(!response.ok) {
-                let error = new Error(responseData.message || 'Logowanie nie powiodło się. Spróbuj później');
-                if(response.status == 401) {
-                    error = new Error('Dane logowania są niepoprawne!');
-                }
+                .then(handleErrors)
+                .catch(error => {
+                    console.log(error);
+                    if(error.message === null) {
+                        throw new Error('Logowanie nie powiodło się. Spróbuj ponownie później');
+                    } else {
+                        throw new Error(error.message);
+                    }
+                });
                 
-                throw error;
-            }
+                const responseData = await response.json();
 
-            const responseData = await response.json();
-
-            context.commit('setUser', {
-                token: responseData.token,
-                login: responseData.login
-            })
+                context.commit('setUser', {
+                    token: responseData.token,
+                    login: responseData.login
+                });
         },
         async signup(context, payload) {
             console.log(payload.address);
@@ -81,11 +87,9 @@ export default {
                     phone: payload.phone
                 })
             });
-            
-            const responseData = await response.json();
 
             if(!response.ok) {
-                let error = new Error(responseData.message || 'Rejestrowanie nie powiodło się. Spróbuj później');
+                let error = new Error('Rejestrowanie nie powiodło się. Spróbuj później');
                 
                 throw error;
             }

@@ -17,44 +17,38 @@ export default {
 </script>
 
 <style scoped>
-button,
-a {
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  font: inherit;
-  background-color: #1b1c1d;
-  border: 1px solid #1b1c1d;
-  color: #E9E9E9;
-  cursor: pointer;
-  border-radius: 30px;
-  margin-right: 0.5rem;
+button {
+  position: relative;
   display: inline-block;
+  padding: 10px 20px;
+  color: #ef3dff;
+  font-size: 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: .5s;
+  margin-top: 10px;
+  letter-spacing: 4px
+}
+.type2 {
+    color: #03e9f4;
+}
+button {
+    border: none;
+    background: none;
+}
+button:hover{
+    background: #03e9f4;
+    box-shadow: 0 0 5px #03e9f4,
+              0 0 25px #03e9f4,
+              0 0 50px #03e9f4;
 }
 
-a:hover,
-a:active,
-button:hover,
-button:active {
-  background-color: #000000;
-  border-color: #000000;
-}
-
-.flat {
-  background-color: transparent;
-  color: #3a0061;
-  border: none;
-}
-
-.outline {
-  background-color: transparent;
-  border-color: #270041;
-  color: #270041;
-}
-
-.flat:hover,
-.flat:active,
-.outline:hover,
-.outline:active {
-  background-color: #E9E9E9;
+.type2:hover {
+  background: #ef3dff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ef3dff,
+              0 0 25px #ef3dff,
+              0 0 50px #ef3dff;
 }
 </style>
