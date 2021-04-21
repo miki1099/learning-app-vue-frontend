@@ -6,6 +6,7 @@ import NotFound from './pages/notFound/NotFound.vue'
 import UserInfo from './pages/user/UserInfo.vue'
 import UpdateUserData from './pages/user/UpdateUserData.vue'
 import ChangePassword from './pages/user/ChangePassword.vue'
+import AdminHome from './pages/admin/AdminHome.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -22,7 +23,8 @@ const router = createRouter({
         { path: '/curiocity', component: null},
         { path: '/login', component: UserAuth},
         { path: '/register', component: UserCreate},
-        { path: '/admin', component: null},
+        { path: '/admin/home', component: AdminHome},
+        { path: '/admin/createQuestion', component: null},
         { path: '/:notFound(.*)', component: NotFound}
     ]
 });

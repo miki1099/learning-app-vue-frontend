@@ -36,7 +36,7 @@ export default{
         logout() {
             this.$store.commit('logout');
             this.$store.commit('logoutUser');
-            this.$router.push('/home');
+            this.$router.replace('/home');
         },
         goToUserDetails() {
             this.$router.push('/user/me');

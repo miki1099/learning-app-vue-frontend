@@ -62,7 +62,7 @@ export default {
                 return;
             }
             this.isLoading = false;
-            this.$router.push('/home');
+            this.$router.replace('/home');
         },
         handleError() {
             this.error = null;

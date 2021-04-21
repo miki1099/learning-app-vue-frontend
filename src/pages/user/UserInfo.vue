@@ -69,20 +69,29 @@
             </div>
         </div>
         <div class="buttons">
-            <router-link class="link" to="/user/me/changeDetails">Zmień dane</router-link>
-            <router-link class="link" to="/user/me/changePassword">Zmień hasło</router-link>
-            <router-link class="link" to="/user/me/orders">Zamówienia</router-link>
-            <router-link class="link" to="/admin" v-if="isAdmin">Strona admina</router-link>
+            <base-button>
+                <router-link class="link" to="/user/me/changeDetails">Zmień dane</router-link>
+            </base-button>
+            <base-button mode="type2">
+                <router-link class="link2" to="/user/me/changePassword">Zmień hasło</router-link>
+            </base-button>
+            <base-button>
+                <router-link class="link" to="/user/me/orders">Zamówienia</router-link>
+            </base-button>
+            <base-button mode="type2">
+                <router-link class="link2" to="/admin/home" v-if="isAdmin">Strona admina</router-link>
+            </base-button>
         </div>
     </div>  
     
 </template>
 
 <script>
+import BaseButton from '../../components/atoms/BaseButton.vue';
 import BaseSpinner from '../../components/atoms/BaseSpinner.vue';
 
 export default {
-  components: { BaseSpinner },
+  components: { BaseSpinner, BaseButton },
     data() {
         return {
             login: null,
@@ -144,16 +153,13 @@ p {
 
 .link{
     text-decoration: none;
-    color: #E9E9E9;
-    border: 1px solid #ef3dff;
-    background: #ef3dff;
-    border-radius: 30px;
-    padding: 10px;
-    margin: 15px 0px;
-
+    color: #ef3dff;
 }
 
-
+.link2{
+    text-decoration: none;
+    color: #03e9f4;
+}
 
 .profile-user-info {
     display: table;
@@ -195,9 +201,9 @@ p {
         justify-content: space-between;
     }
 
-    .link{
+    /* .link{
         padding: 3px;
         flex-basis: 40%;
-    }
+    } */
 }
 </style>
