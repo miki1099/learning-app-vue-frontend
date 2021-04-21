@@ -56,6 +56,7 @@ export default {
                 login: this.login,
                 password: this.password
                 });
+                await this.$store.dispatch('saveUser');
             } catch(err) {
                 this.error = err.message;
                 this.isLoading = false;

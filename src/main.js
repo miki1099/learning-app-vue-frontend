@@ -26,6 +26,9 @@ const store = createStore({
           }
     }
 });
+
+export default store;
+
 const app = createApp(App)
 
 app.use(store);

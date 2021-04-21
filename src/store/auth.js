@@ -47,7 +47,7 @@ export default {
                 .then(handleErrors)
                 .catch(error => {
                     console.log(error);
-                    if(error.message === null) {
+                    if(error.message === null || error.message === 'Failed to fetch') {
                         throw new Error('Logowanie nie powiodło się. Spróbuj ponownie później');
                     } else {
                         throw new Error(error.message);
@@ -58,7 +58,7 @@ export default {
 
                 context.commit('setUser', {
                     token: responseData.token,
-                    login: responseData.login
+                    login: responseData.login,
                 });
         },
         async signup(context, payload) {
@@ -101,6 +101,10 @@ export default {
         },
         getToken: state => {
             return state.token;
+        },
+        isAuthenticated: state => {
+            console.log('pi');
+            return !!state.login;
         }
     }
 }

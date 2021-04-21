@@ -7,26 +7,39 @@ import UserInfo from './pages/user/UserInfo.vue'
 import UpdateUserData from './pages/user/UpdateUserData.vue'
 import ChangePassword from './pages/user/ChangePassword.vue'
 import AdminHome from './pages/admin/AdminHome.vue'
+import store from './main.js'
 
 const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/', redirect: '/home'},
         { path: '/home', component: HelloWorld},
-        { path: '/learn', component: null},
-        { path: '/user/me', component: UserInfo},
-        { path: '/user/me/changeDetails', component: UpdateUserData},
-        { path: '/user/me/changePassword', component: ChangePassword},
-        { path: '/user/me/orders', component: null},
-        { path: '/achivements', component: null},
-        { path: '/test', component: null},
+        { path: '/learn', component: null, meta: {requiresAuth: true}},
+        { path: '/user/me', component: UserInfo, meta: {requiresAuth: true}},
+        { path: '/user/me/changeDetails', component: UpdateUserData, meta: {requiresAuth: true}},
+        { path: '/user/me/changePassword', component: ChangePassword, meta: {requiresAuth: true}},
+        { path: '/user/me/orders', component: null, meta: {requiresAuth: true}},
+        { path: '/achivements', component: null, meta: {requiresAuth: true}},
+        { path: '/test', component: null, meta: {requiresAuth: true}},
         { path: '/curiocity', component: null},
-        { path: '/login', component: UserAuth},
-        { path: '/register', component: UserCreate},
-        { path: '/admin/home', component: AdminHome},
-        { path: '/admin/createQuestion', component: null},
+        { path: '/login', component: UserAuth, meta: {requiresUnauth: true}},
+        { path: '/register', component: UserCreate, meta: {requiresUnauth: true}},
+        { path: '/admin/home', component: AdminHome, meta: {requiresAdmin: true}},
+        { path: '/admin/createQuestion', component: null, meta: {requiresAdmin: true}},
         { path: '/:notFound(.*)', component: NotFound}
     ]
+});
+
+router.beforeEach(function(to, _, next) {
+    if(to.meta.requiresAdmin && !store.getters.isAdmin ) {
+        next('/home');
+    } else if(to.meta.requiresAuth && !store.getters.isAuthenticated) {
+        next('/login');
+    } else if(to.meta.requiresUnauth && store.getters.isAuthenticated) {
+        next('/home');
+    } else {
+        next();
+    }
 });
 
 export default router;
