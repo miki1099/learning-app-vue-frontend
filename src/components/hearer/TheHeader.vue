@@ -4,7 +4,8 @@
     <the-burger id="side-menu"></the-burger>
     <div id="user-side">
         <div id="welcome-user" v-if="!!userLogin" @click="goToUserDetails">Witaj {{ userLogin }}!</div>
-        <button @click="loginLogout">{{!!!userLogin? 'Zaloguj' : 'Wyloguj'}}</button>
+        <base-button @click="register" v-if="!!!userLogin" class="sign-up">zapisz się</base-button>
+        <base-button mode="type2" @click="loginLogout">{{!!!userLogin? 'Zaloguj' : 'Wyloguj'}}</base-button>
     </div>
 </header>
 </template>
@@ -39,6 +40,9 @@ export default{
         },
         goToUserDetails() {
             this.$router.push('/user/me');
+        }, 
+        register() {
+            this.$router.push('/register');
         }
     }
 }
@@ -55,11 +59,13 @@ header {
     float: left;
     width: 10%;
     height: 10%;
+    margin: 10px 50px 0 0;
 }
 
 #user-side {
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 #welcome-user {
@@ -70,17 +76,19 @@ header {
     margin: 0 5%;
     cursor: pointer;
 }
- button {
-    display: inline-block;
-    background: rgba(0, 11, 71, 0.3);
-    border-radius: 30px;
-    color: #E9E9E9;
-    min-width: 70px;
-    max-width: 200px;
-    width: 10%;
-    min-height: 30px;
-    /* max-height: 90px; */
-    height: 5%;
-    font-size: calc(5px + 0.8vw);
- }
+
+.sign-up {
+    box-shadow: 0 0 3px #ef3dff;
+}
+
+button {
+    box-shadow: 0 0 3px #03e9f4;
+    border-radius: 5px;
+}
+
+@media (max-width: 417px) {
+    #side-menu {
+        margin: 20px 50px 0 0;
+    }
+}
 </style>

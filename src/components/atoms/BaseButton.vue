@@ -51,4 +51,11 @@ button:hover{
               0 0 25px #ef3dff,
               0 0 50px #ef3dff;
 }
+
+@media (max-width: 600px) {
+    button {
+      letter-spacing: 2px;
+      padding: 5px 10px;
+    }
+}
 </style>
