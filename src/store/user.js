@@ -36,8 +36,6 @@ export default {
                 
                 throw error;
             }
-            
-            console.log(responseData);
 
             const roles = responseData.roles;
 

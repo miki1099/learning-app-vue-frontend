@@ -103,7 +103,6 @@ export default {
             return state.token;
         },
         isAuthenticated: state => {
-            console.log('pi');
             return !!state.login;
         }
     }

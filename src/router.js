@@ -7,6 +7,8 @@ import UserInfo from './pages/user/UserInfo.vue'
 import UpdateUserData from './pages/user/UpdateUserData.vue'
 import ChangePassword from './pages/user/ChangePassword.vue'
 import AdminHome from './pages/admin/AdminHome.vue'
+import CreateQuestion from './pages/admin/CreateQuestion.vue'
+
 import store from './main.js'
 
 const router = createRouter({
@@ -25,13 +27,13 @@ const router = createRouter({
         { path: '/login', component: UserAuth, meta: {requiresUnauth: true}},
         { path: '/register', component: UserCreate, meta: {requiresUnauth: true}},
         { path: '/admin/home', component: AdminHome, meta: {requiresAdmin: true}},
-        { path: '/admin/createQuestion', component: null, meta: {requiresAdmin: true}},
+        { path: '/admin/createQuestion', component: CreateQuestion, meta: {requiresAdmin: true}},
         { path: '/:notFound(.*)', component: NotFound}
     ]
 });
 
 router.beforeEach(function(to, _, next) {
-    if(to.meta.requiresAdmin && !store.getters.isAdmin ) {
+    if(to.meta.requiresAdmin && !store.getters.getIsAdmin ) {
         next('/home');
     } else if(to.meta.requiresAuth && !store.getters.isAuthenticated) {
         next('/login');
