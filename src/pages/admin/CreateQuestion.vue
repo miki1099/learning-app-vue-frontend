@@ -12,8 +12,7 @@
                     <label>Link do zdjęcia</label>
                 </div>
                 <div class="user-box">
-                    <input type="text" name="" required="" v-model="questionName" :class="{invalid: !isFormValid, valid: isFormValid}">
-                    <label>Pytanie</label>
+                    <textarea placeholder="Treść pytania" name="" required="" v-model="questionName" :class="{invalid: !isFormValid, valid: isFormValid}"></textarea>
                 </div>
                 <div class="user-box">
                     <input type="text" name="" required="" v-model="goodAns" :class="{invalid: !isFormValid, valid: isFormValid}">
@@ -31,9 +30,15 @@
                     <input type="text" name="" v-model="badAns3" :class="{invalid: !isFormValid, valid: isFormValid}">
                     <label>Zła odpowiedź 3 (opcjonalna)</label>
                 </div>
-                <div class="user-box">
-                    <input type="text" name="" required="" v-model="category" :class="{invalid: !isFormValid, valid: isFormValid}">
-                    <label>Kategoria</label>
+                <div class="category-select">
+                    <span>Kategoria</span>
+                    <select v-model="category" class="select-class">
+                        <option disabled value="">----</option>
+                        <option>Konstelacje gwiezdne</option>
+                        <option>Podstawy astronomii</option>
+                        <option>Inne</option>
+                    </select>
+                    
                 </div>
             </div>
             <base-spinner v-if="isLoading"></base-spinner>
@@ -156,6 +161,7 @@ export default {
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 p {
     color: rgb(255, 0, 21);
     white-space: pre-wrap;
@@ -173,12 +179,36 @@ a {
   text-align: center;
 }
 
+.select-class {
+    background-color: #303133;
+    border-color: #6a6c70;
+    color: #E9E9E9;
+}
+
+.category-select {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 150px;
+}
+
 .login-box .user-box {
   position: relative;
 }
 
 .login-box .user-box input {
-    width: 30%;
+    width: 50%;
+}
+.login-box .user-box textarea {
+    width: 50%;
+    resize: none;
+    font-family: "Open Sans";
+}
+
+.login-box .user-box textarea::placeholder {
+    color: #E9E9E9;
+    font-family: "Open Sans";
 }
 
 .login-box .user-box .invalid {
@@ -204,7 +234,7 @@ a {
 .login-box .user-box label:not(.switch) {
   position: absolute;
   top:0;
-  left: 35%;
+  left: 25%;
   padding: 10px 0;
   font-size: 16px;
   color: #E9E9E9;
@@ -215,7 +245,7 @@ a {
 .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
   top: -20px;
-  left: 35%;
+  left: 25%;
   color: #ef3dff;
   font-size: 15px;
 }
@@ -326,5 +356,10 @@ input:checked + .slider:before {
     .login-box .user-box input:valid ~ label {
         left: 0;
     }
+    .login-box .user-box textarea {
+    width: 100%;
+    resize: none;
+    font-family: "Open Sans";
+}
 }
 </style>
