@@ -1,11 +1,23 @@
 <template>
-    <div id="card">
+    <div :class="mode">
         <slot></slot>
     </div>
 </template>
 
+<script>
+export default {
+  props: {
+    mode: {
+      type: String,
+      required: false,
+      default: 'card'
+    }
+  }
+}
+</script>
+
 <style scoped>
-#card {
+.card {
   border-radius: 20px;
   box-shadow: 0 2px 8px #434343;
   padding: 1rem;
@@ -14,8 +26,17 @@
   background-color: #3C3C3C;
 }
 
+.dark {
+  border-radius: 20px;
+  box-shadow: 0 2px 8px #2f2f2f;
+  padding: 1rem;
+  margin: 2rem auto;
+  max-width: 65%;
+  background-color: #2f2f2f;
+}
+
 @media (max-width: 600px) {
-  #card {
+  .card, .dark {
     max-width: 95%;
   }
 }
