@@ -23,7 +23,16 @@ export default {
             date.setDate(date.getDate() + 7);
             state.tokenExpiration = date;
         },
+        setUserWithExt(state, payload) {
+            state.token = payload.token;
+            state.login = payload.login;
+            state.tokenExpiration = payload.tokenExpiration;
+        },
         logout(state) {
+            localStorage.removeItem('token');
+            localStorage.removeItem('login');
+            localStorage.removeItem('tokenExp');
+            localStorage.removeItem('isAdmin');
             state.token = null;
             state.login = null;
             state.tokenExpiration = null;
@@ -55,8 +64,11 @@ export default {
                 });
                 
                 const responseData = await response.json();
+
+                var date = new Date();
                 localStorage.setItem('token', responseData.token);
                 localStorage.setItem('login', responseData.login);
+                localStorage.setItem('tokenExp', date.setDate(date.getDate() + 6));
 
                 context.commit('setUser', {
                     token: responseData.token,
@@ -101,11 +113,20 @@ export default {
         tryLogIn(context) {
             const token = localStorage.getItem('token');
             const login = localStorage.getItem('login');
+            const tokenExp = localStorage.getItem('tokenExp');
+            
+            const expiresIn = +tokenExp - new Date().getTime();
+            console.log(expiresIn);
+            if(expiresIn < 0) {
+                context.commit('logout');
+                return;
+            }
 
             if(token && login) {
-                context.commit('setUser', {
+                context.commit('setUserWithExt', {
                     token: token,
                     login: login,
+                    tokenExpiration: tokenExp
                 });
             }
         }
