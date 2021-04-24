@@ -46,6 +46,8 @@ export default {
                 }
             }
 
+            localStorage.setItem('isAdmin', context.getters.getIsAdmin);
+
             if(responseData.address !== null) {
                 context.commit('saveUser', {
                     email: responseData.email,
@@ -99,8 +101,6 @@ export default {
                 
                 throw error;
             }
-            
-            console.log(responseData);
 
             const roles = responseData.roles;
 
@@ -110,6 +110,7 @@ export default {
                     break;
                 }
             }
+
 
             if(responseData.address !== null) {
                 context.commit('saveUser', {
@@ -133,6 +134,12 @@ export default {
                     street: null,
                     homeNumber: null,
                 });
+            }
+        },
+        tryIsAdmin(context) {
+            const isAdmin = localStorage.getItem('isAdmin');
+            if(isAdmin === 'true') {
+                context.commit('setAdmin');
             }
         }
     },

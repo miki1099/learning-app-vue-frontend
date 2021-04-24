@@ -19,6 +19,10 @@ export default {
     BaseCard,
     SideBar,
     TheHeader
+  },
+  created() {
+    this.$store.dispatch('tryLogIn');
+    this.$store.dispatch('tryIsAdmin');
   }
 }
 </script>

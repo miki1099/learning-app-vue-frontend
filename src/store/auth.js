@@ -55,6 +55,8 @@ export default {
                 });
                 
                 const responseData = await response.json();
+                localStorage.setItem('token', responseData.token);
+                localStorage.setItem('login', responseData.login);
 
                 context.commit('setUser', {
                     token: responseData.token,
@@ -89,9 +91,22 @@ export default {
             });
 
             if(!response.ok) {
-                let error = new Error('Rejestrowanie nie powiodło się. Spróbuj później');
-                
+                let error = new Error('Rejestrowanie nie powiodło się. Spróbuj później!');
+                if(response.status === 409) {
+                    error = new Error('Użytkownik o podanym loginie już istnieje!');
+                }
                 throw error;
+            }
+        },
+        tryLogIn(context) {
+            const token = localStorage.getItem('token');
+            const login = localStorage.getItem('login');
+
+            if(token && login) {
+                context.commit('setUser', {
+                    token: token,
+                    login: login,
+                });
             }
         }
     },
