@@ -9,6 +9,7 @@ import ChangePassword from './pages/user/ChangePassword.vue'
 import AdminHome from './pages/admin/AdminHome.vue'
 import CreateQuestion from './pages/admin/CreateQuestion.vue'
 import HomeTest from './pages/test/HomeTest.vue'
+import Test from './pages/test/Test.vue'
 
 import store from './main.js'
 
@@ -24,10 +25,7 @@ const router = createRouter({
         { path: '/user/me/orders', component: null, meta: {requiresAuth: true}},
         { path: '/achivements', component: null, meta: {requiresAuth: true}},
         { path: '/test', component: HomeTest, meta: {requiresAuth: true}},
-        { path: '/test/constelations', component: null, meta: {requiresAuth: true}},
-        { path: '/test/basicAstronomy', component: null, meta: {requiresAuth: true}},
-        { path: '/test/other', component: null, meta: {requiresAuth: true}},
-        { path: '/test/all', component: null, meta: {requiresAuth: true}},
+        { path: '/test/:mode', component: Test, meta: {requiresAuth: true}},
         { path: '/curiocity', component: null},
         { path: '/login', component: UserAuth, meta: {requiresUnauth: true}},
         { path: '/register', component: UserCreate, meta: {requiresUnauth: true}},

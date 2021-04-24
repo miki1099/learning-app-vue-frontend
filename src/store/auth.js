@@ -20,7 +20,7 @@ export default {
             state.token = payload.token;
             state.login = payload.login;
             var date = new Date();
-            date.setDate(date.getDate() + 7);
+            date.setDate(date.getDate() + 6);
             state.tokenExpiration = date;
         },
         setUserWithExt(state, payload) {
@@ -116,7 +116,6 @@ export default {
             const tokenExp = localStorage.getItem('tokenExp');
             
             const expiresIn = +tokenExp - new Date().getTime();
-            console.log(expiresIn);
             if(expiresIn < 0) {
                 context.commit('logout');
                 return;

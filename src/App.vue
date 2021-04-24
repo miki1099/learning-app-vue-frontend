@@ -70,6 +70,25 @@ div.sidebar-panel-nav > div > a > svg{
   margin-bottom: 30px;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(73, 73, 73); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
 @media (max-width: 600px){
         .sidebar-panel-nav {
           display: flex;
