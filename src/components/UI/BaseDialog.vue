@@ -117,7 +117,9 @@ menu {
   opacity: 1;
   transform: scale(1);
 }
-
+p {
+  font-size: 1.5rem;
+}
 @media (min-width: 768px) {
   dialog {
     left: calc(50% - 20rem);

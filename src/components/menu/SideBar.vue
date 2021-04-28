@@ -69,7 +69,7 @@
         </router-link>
       </div>
       <div>
-        <router-link to="/achivements" @click="closeSidebarPanel">
+        <router-link to="/achievements" @click="closeSidebarPanel">
         <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M62 23.8421L40.6731 20.6828L30.8901 1.4705L21.2951 20.7775L0 24.1446L15.3969 39.2361L12.0188 60.5296L31.1295 50.5497L50.3368 60.3426L46.7511 39.0831L62 23.8421Z" fill="#E9E9E9"/>
         </svg>

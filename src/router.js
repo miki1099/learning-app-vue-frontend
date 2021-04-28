@@ -10,6 +10,7 @@ import AdminHome from './pages/admin/AdminHome.vue'
 import CreateQuestion from './pages/admin/CreateQuestion.vue'
 import HomeTest from './pages/test/HomeTest.vue'
 import Test from './pages/test/Test.vue'
+import Achievements from './pages/achievement/Achievement.vue'
 
 import store from './main.js'
 
@@ -23,7 +24,7 @@ const router = createRouter({
         { path: '/user/me/changeDetails', component: UpdateUserData, meta: {requiresAuth: true}},
         { path: '/user/me/changePassword', component: ChangePassword, meta: {requiresAuth: true}},
         { path: '/user/me/orders', component: null, meta: {requiresAuth: true}},
-        { path: '/achivements', component: null, meta: {requiresAuth: true}},
+        { path: '/achievements', component: Achievements, meta: {requiresAuth: true}},
         { path: '/test', component: HomeTest, meta: {requiresAuth: true}},
         { path: '/test/:mode', component: Test, meta: {requiresAuth: true}},
         { path: '/curiocity', component: null},

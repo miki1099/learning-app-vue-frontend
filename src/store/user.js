@@ -2,6 +2,7 @@
 export default {
     state() {
         return {
+            id: null,
             login: null,
             email: null,
             name: null,
@@ -47,9 +48,10 @@ export default {
             }
 
             localStorage.setItem('isAdmin', context.getters.getIsAdmin);
-
+            localStorage.setItem('id', responseData.id);
             if(responseData.address !== null) {
                 context.commit('saveUser', {
+                    id: responseData.id,
                     email: responseData.email,
                     login: responseData.login,
                     name: responseData.name,
@@ -62,6 +64,7 @@ export default {
                 });
             } else {
                 context.commit('saveUser', {
+                    id: responseData.id,
                     email: responseData.email,
                     login: responseData.login,
                     name: responseData.name,
@@ -111,9 +114,9 @@ export default {
                 }
             }
 
-
             if(responseData.address !== null) {
                 context.commit('saveUser', {
+                    id: responseData.id,
                     email: responseData.email,
                     login: responseData.login,
                     name: responseData.name,
@@ -125,6 +128,7 @@ export default {
                 });
             } else {
                 context.commit('saveUser', {
+                    id: responseData.id,
                     email: responseData.email,
                     login: responseData.login,
                     name: responseData.name,
@@ -138,6 +142,8 @@ export default {
         },
         tryIsAdmin(context) {
             const isAdmin = localStorage.getItem('isAdmin');
+            const userId = localStorage.getItem('id');
+            context.commit('setId', userId);
             if(isAdmin === 'true') {
                 context.commit('setAdmin');
             }
@@ -145,6 +151,7 @@ export default {
     },
     mutations: {
         saveUser(state, data){
+            state.id = data.id,
             state.login = data.login;
             state.email = data.email;
             state.name = data.name;
@@ -158,7 +165,11 @@ export default {
         setAdmin(state) {
             state.isAdminRole = true;
         },
+        setId(state, id) {
+            state.id = id;
+        },
         logoutUser(state) {
+            state.id = null,
             state.login = null;
             state.email = null;
             state.name = null;
@@ -174,6 +185,7 @@ export default {
     getters: {
         getUser: state => {
             const userReturn = {
+                id: state.id,
                 login: state.login,
                 email: state.email,
                 name: state.name,
@@ -189,6 +201,9 @@ export default {
         },
         getIsAdmin: state => {
             return state.isAdminRole;
+        },
+        getUserId: state => {
+            return state.id;
         }
     }
 }

@@ -36,7 +36,7 @@ async function saveScore(score, questionAmount, token, mode) {
     } else if(mode === 'other') {
         category = 'Inne';
     } else {
-        category = 'Wszsytko';
+        category = 'Wszystko';
     }
 
     let headers = new Headers();

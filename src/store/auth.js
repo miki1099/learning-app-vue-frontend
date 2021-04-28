@@ -33,6 +33,7 @@ export default {
             localStorage.removeItem('login');
             localStorage.removeItem('tokenExp');
             localStorage.removeItem('isAdmin');
+            localStorage.removeItem('id');
             state.token = null;
             state.login = null;
             state.tokenExpiration = null;
