@@ -78,8 +78,8 @@
             <base-button>
                 <router-link class="link" to="/user/me/orders">Zamówienia</router-link>
             </base-button>
-            <base-button mode="type2">
-                <router-link class="link2" to="/admin/home" v-if="isAdmin">Strona admina</router-link>
+            <base-button mode="type2" v-if="isAdmin">
+                <router-link class="link2" to="/admin/home" >Strona admina</router-link>
             </base-button>
         </div>
     </div>  

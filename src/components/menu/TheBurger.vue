@@ -4,6 +4,7 @@
       <button type="button" class="burger-button" title="Menu">
         <span class="hidden">Toggle menu</span>
         <span class="burger-bar burger-bar--1"></span>
+        <span class="hidden">Toggle menu</span>
         <span class="burger-bar burger-bar--2"></span>
         <span class="hidden">Toggle menu</span>
         <span class="burger-bar burger-bar--3"></span>
@@ -29,7 +30,6 @@ export default {
 <style>
 .hidden {
   visibility: hidden;
-  height: 50%;
 }
 
 button {
@@ -88,25 +88,5 @@ button:focus {
 
 .burger-bar--3 {
   transform: translateY(20px);
-}
-
-#burger.active .burger-button {
-  transform: rotate(-180deg);
-}
-
-#burger.active .burger-bar {
-  background-color: #fff;
-}
-
-#burger.active .burger-bar--1 {
-  transform: rotate(45deg);
-}
-
-#burger.active .burger-bar--2 {
-  opacity: 0;
-}
-
-#burger.active .burger-bar--3 {
-  transform: rotate(-45deg);
 }
 </style>

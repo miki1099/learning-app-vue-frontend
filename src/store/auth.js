@@ -105,7 +105,7 @@ export default {
             if(!response.ok) {
                 let error = new Error('Rejestrowanie nie powiodło się. Spróbuj później!');
                 if(response.status === 409) {
-                    error = new Error('Użytkownik o podanym loginie już istnieje!');
+                    error = new Error('Użytkownik o podanym loginie lub emailu już istnieje!');
                 }
                 throw error;
             }

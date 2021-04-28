@@ -31,6 +31,7 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 html {
   background-color: #303133;
+  font-size: 20px;
 }
 
 #app {
@@ -96,6 +97,9 @@ div.sidebar-panel-nav > div > a > svg{
         div.sidebar-panel-nav > div > a:not(#home) > svg{
           width: 30px;
           height: 30px;
+        }
+        html {
+          font-size: 15px;
         }
     }
 

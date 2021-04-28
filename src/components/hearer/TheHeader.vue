@@ -58,8 +58,8 @@ header {
 #side-menu {
     float: left;
     width: 10%;
-    height: 10%;
-    margin: 10px 50px 0 0;
+    height: 3%;
+    margin: 15px 50px 0 0;
 }
 
 #user-side {
