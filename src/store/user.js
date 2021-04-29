@@ -29,18 +29,18 @@ export default {
             });
 
             const responseData = await response.json();
-            if(!response.ok) {
+            if (!response.ok) {
                 let error = new Error(responseData.message || 'Logowanie nie powiodło się. Spróbuj później');
-                if(response.status == 401) {
+                if (response.status == 401) {
                     error = new Error('Twoja sesja wygasła zaloguj się ponownie');
                 }
-                
+
                 throw error;
             }
 
             const roles = responseData.roles;
 
-            for(var i = 0; i < roles.length; i++) {
+            for (var i = 0; i < roles.length; i++) {
                 if (roles[i].name == 'ADMIN') {
                     context.commit('setAdmin');
                     break;
@@ -49,7 +49,7 @@ export default {
 
             localStorage.setItem('isAdmin', context.getters.getIsAdmin);
             localStorage.setItem('id', responseData.id);
-            if(responseData.address !== null) {
+            if (responseData.address !== null) {
                 context.commit('saveUser', {
                     id: responseData.id,
                     email: responseData.email,
@@ -99,22 +99,22 @@ export default {
             });
 
             const responseData = await response.json();
-            if(!response.ok) {
+            if (!response.ok) {
                 let error = new Error('Zmiana danych niepowiodła się');
-                
+
                 throw error;
             }
 
             const roles = responseData.roles;
 
-            for(var i = 0; i < roles.length; i++) {
+            for (var i = 0; i < roles.length; i++) {
                 if (roles[i].name == 'ADMIN') {
                     context.commit('setAdmin');
                     break;
                 }
             }
 
-            if(responseData.address !== null) {
+            if (responseData.address !== null) {
                 context.commit('saveUser', {
                     id: responseData.id,
                     email: responseData.email,
@@ -144,15 +144,15 @@ export default {
             const isAdmin = localStorage.getItem('isAdmin');
             const userId = localStorage.getItem('id');
             context.commit('setId', userId);
-            if(isAdmin === 'true') {
+            if (isAdmin === 'true') {
                 context.commit('setAdmin');
             }
         }
     },
     mutations: {
-        saveUser(state, data){
+        saveUser(state, data) {
             state.id = data.id,
-            state.login = data.login;
+                state.login = data.login;
             state.email = data.email;
             state.name = data.name;
             state.lastName = data.lastName;
@@ -170,7 +170,7 @@ export default {
         },
         logoutUser(state) {
             state.id = null,
-            state.login = null;
+                state.login = null;
             state.email = null;
             state.name = null;
             state.lastName = null;

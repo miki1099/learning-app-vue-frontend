@@ -1,5 +1,5 @@
 <template>
-  <div id="burger" :class="{ 'active' : isBurgerActive }" @click.prevent="toggle">
+  <div id="burger" :class="{ active: isBurgerActive }" @click.prevent="toggle">
     <slot>
       <button type="button" class="burger-button" title="Menu">
         <span class="hidden">Toggle menu</span>
@@ -13,18 +13,17 @@
   </div>
 </template>
 <script>
-
 export default {
   computed: {
     isBurgerActive() {
       return this.$store.state.isNavOpen;
-    }
+    },
   },
   methods: {
     toggle() {
       this.$store.commit('toggleNav');
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
@@ -55,7 +54,7 @@ button:focus {
 }
 
 .burger-bar {
-  background-color: #E9E9E9;
+  background-color: #e9e9e9;
   position: absolute;
   top: 20%;
   right: 6px;

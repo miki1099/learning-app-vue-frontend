@@ -17,31 +17,31 @@ import store from './main.js'
 const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', redirect: '/home'},
-        { path: '/home', component: HelloWorld},
-        { path: '/learn', component: null, meta: {requiresAuth: true}},
-        { path: '/user/me', component: UserInfo, meta: {requiresAuth: true}},
-        { path: '/user/me/changeDetails', component: UpdateUserData, meta: {requiresAuth: true}},
-        { path: '/user/me/changePassword', component: ChangePassword, meta: {requiresAuth: true}},
-        { path: '/user/me/orders', component: null, meta: {requiresAuth: true}},
-        { path: '/achievements', component: Achievements, meta: {requiresAuth: true}},
-        { path: '/test', component: HomeTest, meta: {requiresAuth: true}},
-        { path: '/test/:mode', component: Test, meta: {requiresAuth: true}},
-        { path: '/curiocity', component: null},
-        { path: '/login', component: UserAuth, meta: {requiresUnauth: true}},
-        { path: '/register', component: UserCreate, meta: {requiresUnauth: true}},
-        { path: '/admin/home', component: AdminHome, meta: {requiresAdmin: true}},
-        { path: '/admin/createQuestion', component: CreateQuestion, meta: {requiresAdmin: true}},
-        { path: '/:notFound(.*)', component: NotFound}
+        { path: '/', redirect: '/home' },
+        { path: '/home', component: HelloWorld },
+        { path: '/learn', component: null, meta: { requiresAuth: true } },
+        { path: '/user/me', component: UserInfo, meta: { requiresAuth: true } },
+        { path: '/user/me/changeDetails', component: UpdateUserData, meta: { requiresAuth: true } },
+        { path: '/user/me/changePassword', component: ChangePassword, meta: { requiresAuth: true } },
+        { path: '/user/me/orders', component: null, meta: { requiresAuth: true } },
+        { path: '/achievements', component: Achievements, meta: { requiresAuth: true } },
+        { path: '/test', component: HomeTest, meta: { requiresAuth: true } },
+        { path: '/test/:mode', component: Test, meta: { requiresAuth: true } },
+        { path: '/curiocity', component: null },
+        { path: '/login', component: UserAuth, meta: { requiresUnauth: true } },
+        { path: '/register', component: UserCreate, meta: { requiresUnauth: true } },
+        { path: '/admin/home', component: AdminHome, meta: { requiresAdmin: true } },
+        { path: '/admin/createQuestion', component: CreateQuestion, meta: { requiresAdmin: true } },
+        { path: '/:notFound(.*)', component: NotFound }
     ]
 });
 
-router.beforeEach(function(to, _, next) {
-    if(to.meta.requiresAdmin && !store.getters.getIsAdmin ) {
+router.beforeEach(function (to, _, next) {
+    if (to.meta.requiresAdmin && !store.getters.getIsAdmin) {
         next('/home');
-    } else if(to.meta.requiresAuth && !store.getters.isAuthenticated) {
+    } else if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
         next('/login');
-    } else if(to.meta.requiresUnauth && store.getters.isAuthenticated) {
+    } else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
         next('/home');
     } else {
         next();

@@ -1,7 +1,7 @@
 <template>
-    <div :class="mode">
-        <slot></slot>
-    </div>
+  <div :class="mode">
+    <slot></slot>
+  </div>
 </template>
 
 <script>
@@ -10,10 +10,10 @@ export default {
     mode: {
       type: String,
       required: false,
-      default: 'card'
-    }
-  }
-}
+      default: 'card',
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -23,7 +23,7 @@ export default {
   padding: 1rem;
   margin: 2rem auto;
   max-width: 65%;
-  background-color: #3C3C3C;
+  background-color: #3c3c3c;
 }
 
 .dark {
@@ -45,7 +45,8 @@ export default {
 }
 
 @media (max-width: 600px) {
-  .card, .dark {
+  .card,
+  .dark {
     max-width: 95%;
   }
 }
