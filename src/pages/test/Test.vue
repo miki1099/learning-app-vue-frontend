@@ -37,11 +37,21 @@
     <h2>Twój wynik to: {{ Math.round((score / questions.length) * 100) }}%</h2>
     <base-button @click="tryAgain">Spróbuj ponownie!</base-button>
     <base-button @click="handleErrorOrGoHome">Strona główna</base-button>
+    <base-button @click="goToLearn">Ucz się</base-button>
+    <h3>Prawidłowe odpowiedzi:</h3>
+    <div v-for="question in questions" :key="question.id">
+      <base-card mode="question">
+        <img class="photo" :src="question.picture" />
+        <p class="question-text">{{ question.questionName }}</p>
+        <p class="good-answer">{{ question.goodAnswer }}</p>
+      </base-card>
+    </div>
   </div>
 </template>
 
 <script>
 import BaseButton from '../../components/atoms/BaseButton.vue';
+import BaseCard from '../../components/UI/BaseCard.vue';
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
@@ -105,7 +115,7 @@ function shuffle(array) {
 }
 
 export default {
-  components: { BaseButton },
+  components: { BaseButton, BaseCard },
   data() {
     return {
       questionNumber: 0,
@@ -218,8 +228,6 @@ export default {
       this.isLoading = false;
     },
     nextQuestion(questionNumberChoosed) {
-      console.log(this.answers[questionNumberChoosed]);
-      console.log(this.questions[this.questionNumber]);
       if (
         this.answers[questionNumberChoosed] ===
         this.questions[this.questionNumber].goodAnswer
@@ -257,6 +265,9 @@ export default {
     tryAgain() {
       this.$router.go();
     },
+    goToLearn() {
+      this.$router.push('/learn');
+    }
   },
 };
 </script>
@@ -284,6 +295,11 @@ export default {
   border-radius: 5px;
   font-size: 1.1rem;
 }
+
+.good-answer {
+  color: #33ff00;
+}
+
 @media (max-width: 600px) {
   .button {
     font-size: 1.3rem;

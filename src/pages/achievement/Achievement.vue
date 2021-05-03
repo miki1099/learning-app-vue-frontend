@@ -18,23 +18,14 @@
       </tr>
     </table>
   </div>
-  <div class="nav" v-if="!isLoading">
-    <span v-if="currentPage !== 0" @click="navMethod(0)">1</span>
-    <span v-if="currentPage !== 0" @click="navMethod(currentPage - 1)"
-      >poprzednia strona</span
-    >
-    <span
-      v-if="
-        currentPage !== maxSiteNumber - 1 && currentPage !== maxSiteNumber - 2
-      "
-      @click="navMethod(currentPage + 1)"
-      >następna strona</span
-    >
-    <span
-      v-if="currentPage !== maxSiteNumber - 1"
-      @click="navMethod(maxSiteNumber - 1)"
-      >{{ maxSiteNumber }}</span
-    >
+  <div class="nav" v-if="!isLoading" >
+    <span :class="{disable: currentPage === 0}" @click="navMethod(currentPage - 1)">poprzednia strona</span>
+    <span :class="{disable: currentPage === 0}" @click="navMethod(0)">1</span>
+    <div v-for="pageNumber in pageChange" :key="pageNumber">
+      <span :class="{disable: pageNumber === currentPage+1}" @click="navMethod(pageNumber-1)">{{ pageNumber }}</span>
+    </div>
+    <span :class="{disable: currentPage === maxSiteNumber-1}" @click="navMethod(maxSiteNumber - 1)">{{ maxSiteNumber }}</span>
+    <span :class="{disable: currentPage === maxSiteNumber-1}" @click="navMethod(currentPage + 1)">następna strona</span>
   </div>
 </template>
 
@@ -56,6 +47,18 @@ export default {
   },
   created() {
     this.loadScoreList(false, this.scoreAsc, 0);
+  },
+  computed: {
+    pageChange() {
+      let pages = [];
+      for(let i = this.currentPage+1 - 2; i <= this.currentPage+1+2; i++) {
+        if(i >= 2 && i <= this.maxSiteNumber-1) {
+          pages.push(i);
+        }
+      }
+      console.log(pages);
+      return pages;
+    }
   },
   methods: {
     async loadScoreList(getScoreByDate, sortByAsc, page) {
@@ -169,33 +172,50 @@ table {
   justify-content: space-around;
   align-items: center;
 }
-.nav span {
+.nav span:not(.disable) {
   cursor: pointer;
 }
-.nav span:hover {
+
+.nav .disable {
+  opacity: 20%;
+}
+
+.nav span:not(.disable):hover {
   color: #ef3dff;
 }
 td,
 th {
   padding: 4px;
-  border: 1px dotted rgb(133, 0, 0);
+  /* border: 1px dotted rgb(133, 0, 0); */
   overflow: hidden;
   text-align: left;
   vertical-align: middle;
 }
 th {
-  background-color: #9627a0;
+  background-color: #273135;
   font-weight: 400;
 }
 .pointer {
   cursor: pointer;
 }
+.pointer:hover {
+  background: #485b62;
+}
 tr:nth-child(even) {
-  background: #028b92;
+  background: #646b6d;
 }
 tr:nth-child(odd) {
-  background: #54165a;
+  background: #344146;
 }
+
+tr:nth-child(even):hover {
+  background: #5a7079;
+}
+
+tr:nth-child(odd):hover {
+  background: #5f7781;
+}
+
 .sort-by {
   padding-right: 18px;
   position: relative;
