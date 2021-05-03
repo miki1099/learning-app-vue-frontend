@@ -11,6 +11,7 @@ import CreateQuestion from './pages/admin/CreateQuestion.vue'
 import HomeTest from './pages/test/HomeTest.vue'
 import Test from './pages/test/Test.vue'
 import Achievements from './pages/achievement/Achievement.vue'
+import Learn from './pages/learn/LearnHome.vue'
 
 import store from './main.js'
 
@@ -19,7 +20,7 @@ const router = createRouter({
     routes: [
         { path: '/', redirect: '/home' },
         { path: '/home', component: HelloWorld },
-        { path: '/learn', component: null, meta: { requiresAuth: true } },
+        { path: '/learn', component: Learn, meta: { requiresAuth: true } },
         { path: '/user/me', component: UserInfo, meta: { requiresAuth: true } },
         { path: '/user/me/changeDetails', component: UpdateUserData, meta: { requiresAuth: true } },
         { path: '/user/me/changePassword', component: ChangePassword, meta: { requiresAuth: true } },
