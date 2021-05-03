@@ -239,4 +239,20 @@ tr:nth-child(odd):hover {
   border-top-color: rgb(0, 0, 0);
   margin-top: 1px;
 }
+@media (max-width: 800px) {
+  .nav {
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+  .nav span {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+  .nav div span {
+    font-size: 1.5rem;
+    margin: 10px 0;
+  }
+}
 </style>
