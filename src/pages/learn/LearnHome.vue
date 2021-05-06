@@ -14,7 +14,9 @@
     </base-card>
 </div>
 <div v-if="isFlashCardClicked">
+  <div class="button-back">
     <base-button @click="isFlashCardClicked = false">Cofnij</base-button>
+  </div>
    <base-card mode="dark"
     ><router-link to="/learn/constelations" class="link">
       <svg
@@ -413,6 +415,14 @@ export default {
 
   color: #e9e9e9;
 }
+
+.button-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
 .link label {
   cursor: pointer;
   font-size: 35px;

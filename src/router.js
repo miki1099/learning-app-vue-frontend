@@ -12,6 +12,7 @@ import HomeTest from './pages/test/HomeTest.vue'
 import Test from './pages/test/Test.vue'
 import Achievements from './pages/achievement/Achievement.vue'
 import Learn from './pages/learn/LearnHome.vue'
+import LearnFlashcard from './pages/learn/LearnFlashcard.vue'
 
 import store from './main.js'
 
@@ -21,6 +22,8 @@ const router = createRouter({
         { path: '/', redirect: '/home' },
         { path: '/home', component: HelloWorld },
         { path: '/learn', component: Learn, meta: { requiresAuth: true } },
+        { path: '/learn/:mode', component: LearnFlashcard, meta: { requiresAuth: true } },
+        { path: '/learn/encyclopedia', component: null, meta: { requiresAuth: true } },
         { path: '/user/me', component: UserInfo, meta: { requiresAuth: true } },
         { path: '/user/me/changeDetails', component: UpdateUserData, meta: { requiresAuth: true } },
         { path: '/user/me/changePassword', component: ChangePassword, meta: { requiresAuth: true } },
