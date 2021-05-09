@@ -14,6 +14,8 @@ import Achievements from './pages/achievement/Achievement.vue'
 import Learn from './pages/learn/LearnHome.vue'
 import LearnFlashcard from './pages/learn/LearnFlashcard.vue'
 import ResetQuestionsLearned from './pages/learn/ResetQuestionsLearned.vue'
+import CuriocityHome from './pages/curiocity/CuriocityHome.vue'
+import CuriocityApod from './pages/curiocity/CuriocityApod.vue'
 
 import store from './main.js'
 
@@ -33,7 +35,9 @@ const router = createRouter({
         { path: '/achievements', component: Achievements, meta: { requiresAuth: true } },
         { path: '/test', component: HomeTest, meta: { requiresAuth: true } },
         { path: '/test/:mode', component: Test, meta: { requiresAuth: true } },
-        { path: '/curiocity', component: null },
+        { path: '/curiocity', component: CuriocityHome },
+        { path: '/curiocity/apod', component: CuriocityApod },
+        { path: '/curiocity/asteroids', component: null },
         { path: '/login', component: UserAuth, meta: { requiresUnauth: true } },
         { path: '/register', component: UserCreate, meta: { requiresUnauth: true } },
         { path: '/admin/home', component: AdminHome, meta: { requiresAdmin: true } },
