@@ -28,6 +28,7 @@
         <h2>Gratulacje umiesz już wszystkie pytania z tej kategorii!</h2>
         <base-button @click="$router.push('/home');">Strona główna</base-button>
         <base-button @click="$router.push('/learn');">Wybór innych kategorii</base-button>
+        <base-button @click="$router.push('/learn/resetQuestions');">Zresetuj pytania</base-button>
     </div>
     <div class="flex-column" v-if="!isLoading && isFinished">
     <h2></h2>
