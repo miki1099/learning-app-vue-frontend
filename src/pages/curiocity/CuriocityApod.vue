@@ -8,6 +8,7 @@
         <h2>{{ title }}</h2>
         <img class="photo" :src="imgUrl" />
         <p>{{ explanation }}</p>
+        <a target="_blank" :href="fullResUrl">Link do zdjęcia w pełnym wymiarze</a>
         <p>Autor: {{ author }}</p>
     </div>
 </template>
@@ -19,6 +20,7 @@ export default {
             imgUrl: null,
             author: null,
             explanation: null,
+            fullResUrl: null,
             title: null,
             isLoading: false,
             error: null
@@ -51,7 +53,7 @@ export default {
             this.author = jsonResponse.copyright;
             this.explanation = jsonResponse.explanation;
             this.title = jsonResponse.title;
-
+            this.fullResUrl = jsonResponse.hdurl;
             const responseInPolish = await fetch("https://api-free.deepl.com/v2/translate?text=" + jsonResponse.explanation+"&target_lang=PL&auth_key=176e7b50-265d-7c1a-7f29-4ca842660fc7:fx", {
                 "method": "POST",
             })
@@ -70,9 +72,12 @@ export default {
 
 <style scoped>
 .photo {
-  width: 60%;
+  width: 80%;
   max-width: 900px;
   border-radius: 20px;
+}
+a {
+  color: #ef3dff;
 }
 @media (max-width: 600px) {
     .photo {
