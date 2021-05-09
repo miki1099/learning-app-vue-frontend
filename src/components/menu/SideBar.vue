@@ -398,6 +398,14 @@ export default {
   }
 }
 
+@media (max-width: 340px) {
+  .exit-button {
+    width: 30px;
+    height: 30px;
+    left: 15px;
+  }
+}
+
 .exit-button {
   cursor: pointer;
   position: absolute;
