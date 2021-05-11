@@ -87,7 +87,7 @@
         >
       </base-button>
       <base-button>
-        <router-link class="link" to="/user/me/orders">Zamówienia</router-link>
+        <router-link class="link" to="/learn/resetQuestions">Resetuj nauczone pytania</router-link>
       </base-button>
       <base-button mode="type2" v-if="isAdmin">
         <router-link class="link2" to="/admin/home">Strona admina</router-link>

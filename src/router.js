@@ -33,7 +33,6 @@ const router = createRouter({
         { path: '/user/me', component: UserInfo, meta: { requiresAuth: true } },
         { path: '/user/me/changeDetails', component: UpdateUserData, meta: { requiresAuth: true } },
         { path: '/user/me/changePassword', component: ChangePassword, meta: { requiresAuth: true } },
-        { path: '/user/me/orders', component: null, meta: { requiresAuth: true } },
         { path: '/achievements', component: Achievements, meta: { requiresAuth: true } },
         { path: '/test', component: HomeTest, meta: { requiresAuth: true } },
         { path: '/test/:mode', component: Test, meta: { requiresAuth: true } },
