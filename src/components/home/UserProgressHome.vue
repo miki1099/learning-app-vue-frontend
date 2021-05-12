@@ -15,7 +15,7 @@
             <label>Inne</label>
         </div>
         <div @click="$router.push('/learn/all')" class="block">
-            <base-circle-counter class="circle" :activeCount="all" width="5rem" height="5rem" :text="all + '%'"/>
+            <base-circle-counter class="circle" activeStroke="#ef3dff" :activeCount="all" width="5rem" height="5rem" :text="all + '%'"/>
             <label>Wszystko</label>
         </div>
         <label @click="$router.push('/learn')">Ucz się</label>

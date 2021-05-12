@@ -75,7 +75,7 @@ export default {
             if (mode === 'constelations') {
                 category = 'Konstelacje gwiezdne';
             } else if (mode === 'basicAstronomy') {
-                category = 'Konstelacje gwiezdne';
+                category = 'Podstawy astronomii';
             } else if (mode === 'other') {
                 category = 'Inne';
             }
