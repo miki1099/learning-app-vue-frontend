@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <userProgresHome v-if="isLoggedIn"/>
     <APODHome/>
     <AsteroidsHome/>
     <SunsetTimeHome/>
@@ -10,12 +11,24 @@
 import APODHome from './home/APODHome.vue'
 import AsteroidsHome from './home/AsteroidsHome.vue'
 import SunsetTimeHome from './home/SunsetTimeHome.vue'
+import userProgresHome from './home/UserProgressHome.vue'
 
 export default {
   components: {
     APODHome,
     AsteroidsHome,
-    SunsetTimeHome
+    SunsetTimeHome,
+    userProgresHome
+  },
+  data() {
+    return {
+      isLoggedIn: false,
+    }
+  },
+  created() {
+    if(this.$store.getters.getToken !== null) {
+      this.isLoggedIn = true;
+    }
   }
 };
 </script>

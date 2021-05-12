@@ -18,7 +18,7 @@
         <td>{{ Math.round(buf.estimated_diameter.meters.estimated_diameter_min+buf.estimated_diameter.meters.estimated_diameter_max/2 * 100) / 100}}</td>
         <td>{{ buf.close_approach_data[0].close_approach_date_full }}</td>
         <td>{{ Math.round(buf.close_approach_data[0].relative_velocity.kilometers_per_second * 100) / 100 }}</td>
-        <td>{{ Math.round(buf.close_approach_data[0].miss_distance.astronomical * 100) / 100 }}</td>
+        <td>{{ Math.round(buf.close_approach_data[0].miss_distance.astronomical * 10000) / 10000 }}</td>
         <td>{{ buf.is_potentially_hazardous_asteroid? truePl:falsePl}}</td>
       </tr>
     </table>
