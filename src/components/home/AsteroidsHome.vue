@@ -71,7 +71,7 @@ export default {
 }
 
 .pointer svg {
-    width: 50%;
+    width: 40%;
     display: block;
 }
 

@@ -59,11 +59,11 @@ export default {
     },
     stroke: {
       type: String, 
-      default: 'lightgrey'
+      default: 'black'
     },
     activeStroke: {
       type: String,
-      default: 'dodgerblue'
+      default: '#03e9f4'
     },
     dashSpacing: {
       type: Number,
