@@ -3,7 +3,8 @@
     <base-spinner v-if="isLoading"/>
     <div @click="$router.push('/curiocity/apod')" class="pointer" v-if="!isLoading">
         <label class="bigger-font">{{ title }}</label>
-        <img :src="photo"/>
+        <img v-if="!isVideo" :src="photo"/>
+        <br/>
         <label>Czytaj więcej...</label>
     </div>
     </base-card>
@@ -15,6 +16,7 @@ export default {
         return {
             photo: null,
             title: null,
+            isVideo: false,
             isLoading: false,
             isGood: true,
         }
@@ -36,6 +38,9 @@ export default {
                 this.isGood = false;
             }
             const jsonResponse = await response.json();
+            if(jsonResponse.media_type === 'video') {
+                this.isVideo = true;
+            }
             this.photo = jsonResponse.url;
             this.title = jsonResponse.title;
             this.isLoading = false;

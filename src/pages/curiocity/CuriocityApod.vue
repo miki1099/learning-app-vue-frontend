@@ -6,10 +6,13 @@
 
     <div class="main" v-if="!isLoading">
         <h2>{{ title }}</h2>
-        <img class="photo" :src="imgUrl" />
+        <img class="photo" v-if="!isVideo" :src="imgUrl" />
+        <iframe class="photo video" v-else
+            :src="imgUrl">
+        </iframe>
         <p>{{ explanation }}</p>
         <a target="_blank" :href="fullResUrl">Link do zdjęcia w pełnym wymiarze</a>
-        <p>Autor: {{ author }}</p>
+        <p v-if="!!author">Autor: {{ author }}</p>
     </div>
 </template>
 
@@ -18,9 +21,11 @@ export default {
     data() {
         return {
             imgUrl: null,
+            ytUrl: null,
             author: null,
             explanation: null,
             fullResUrl: null,
+            isVideo: false,
             title: null,
             isLoading: false,
             error: null
@@ -49,6 +54,9 @@ export default {
                 throw new Error('Nie udało się załadować. Spróbuj ponownie później!');
             }
             const jsonResponse = await response.json();
+            if(jsonResponse.media_type === 'video') {
+                this.isVideo = true;
+            }
             this.imgUrl = jsonResponse.url;
             this.author = jsonResponse.copyright;
             this.explanation = jsonResponse.explanation;
@@ -79,6 +87,10 @@ export default {
 a {
   color: #ef3dff;
 }
+.video {
+    height: 600px;
+}
+
 @media (max-width: 600px) {
     .photo {
         width: 95%;
