@@ -23,6 +23,14 @@ export default {
   created() {
     this.$store.dispatch('tryLogIn');
     this.$store.dispatch('tryIsAdmin');
+    if(this.$store.getters.getExpirationLeft < 432000000) { // less than 5 days
+        this.refreshToken();
+    }
+  },
+  methods: {
+    async refreshToken() {
+       this.$store.dispatch('refreshToken');
+    }
   }
 }
 </script>

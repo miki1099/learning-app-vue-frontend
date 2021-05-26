@@ -111,7 +111,7 @@ export default {
                 throw error;
             }
         },
-        tryLogIn(context) {
+        async tryLogIn(context) {
             const token = localStorage.getItem('token');
             const login = localStorage.getItem('login');
             const tokenExp = localStorage.getItem('tokenExp');
@@ -129,6 +129,34 @@ export default {
                     tokenExpiration: tokenExp
                 });
             }
+        },
+        async refreshToken(context) {
+            let headers = new Headers();
+            const token = localStorage.getItem('token');
+            
+            headers.append('Content-Type', 'application/json');
+            headers.append('Accept', 'application/json');
+            headers.append('Authorization', 'Bearer ' + token);
+            const response = await fetch(
+                'https://learning-app-stars.herokuapp.com/refreshToken',
+                {
+                  method: 'POST',
+                  headers: headers,
+                }
+              );
+              if (!response.ok) {
+                return;
+              }
+            let responseData = await response.json();
+            var date = new Date();
+            localStorage.setItem('token', responseData.token);
+            localStorage.setItem('login', responseData.login);
+            localStorage.setItem('tokenExp', date.setDate(date.getDate() + 6));
+
+            context.commit('setUser', {
+                token: responseData.token,
+                login: responseData.login,
+            });
         }
     },
     getters: {
@@ -140,6 +168,9 @@ export default {
         },
         isAuthenticated: state => {
             return !!state.login;
+        },
+        getExpirationLeft: state => {
+            return state.tokenExpiration  - new Date().getTime();
         }
     }
 }
