@@ -13,6 +13,7 @@ import Test from './pages/test/Test.vue'
 import Achievements from './pages/achievement/Achievement.vue'
 import Learn from './pages/learn/LearnHome.vue'
 import LearnFlashcard from './pages/learn/LearnFlashcard.vue'
+import LearnEncyclopedia from './pages/learn/LearnEncyclopedia.vue'
 import ResetQuestionsLearned from './pages/learn/ResetQuestionsLearned.vue'
 import CuriocityHome from './pages/curiocity/CuriocityHome.vue'
 import CuriocityApod from './pages/curiocity/CuriocityApod.vue'
@@ -28,7 +29,7 @@ const router = createRouter({
         { path: '/home', component: HelloWorld },
         { path: '/learn', component: Learn, meta: { requiresAuth: true } },
         { path: '/learn/:mode', component: LearnFlashcard, meta: { requiresAuth: true } },
-        { path: '/learn/encyclopedia', component: null, meta: { requiresAuth: true } },
+        { path: '/learn/encyclopedia', component: LearnEncyclopedia, meta: { requiresAuth: true } },
         { path: '/learn/resetQuestions', component: ResetQuestionsLearned, meta: { requiresAuth: true } },
         { path: '/user/me', component: UserInfo, meta: { requiresAuth: true } },
         { path: '/user/me/changeDetails', component: UpdateUserData, meta: { requiresAuth: true } },
