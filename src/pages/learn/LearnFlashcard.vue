@@ -160,8 +160,8 @@ export default {
 }
 
 .photo {
-  width: 60%;
-  max-width: 900px;
+  /* width: 60%; */
+  /* max-width: 900px; */
   border-radius: 20px;
 }
 .learn-site {
@@ -231,6 +231,10 @@ export default {
 .flip-card-back p, .flip-card-front p {
     width: 80%;
 
+}
+
+.photo {
+    max-height: 500px;
 }
 
 @media (max-width: 600px) {

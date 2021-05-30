@@ -118,8 +118,15 @@ export default {
                 {id: null, link: 'https://pl.wikipedia.org/wiki/Saturn', name: 'Saturn', category: 'p'},
                 {id: null, link: 'https://pl.wikipedia.org/wiki/Uran', name: 'Uran', category: 'p'},
                 {id: null, link: 'https://pl.wikipedia.org/wiki/Neptun', name: 'Neptun', category: 'p'},
-                {id: null, link: '', name: '', category: 'p'},
-
+                {id: null, link: 'https://pl.wikipedia.org/wiki/Astronomiczne_jednostki_odleg%C5%82o%C5%9Bci', name: 'Jednostki astronomiczne', category: 'p'},
+                {id: null, link: 'https://pl.wikipedia.org/wiki/Kometa', name: 'Kometa', category: 'p'},
+                {id: null, link: 'https://pl.wikipedia.org/wiki/Meteor', name: 'Meteor', category: 'p'},
+                {id: null, link: 'https://pl.wikipedia.org/wiki/Meteoryt', name: 'Meteoryt', category: 'p'},
+                {id: null, link: 'https://pl.wikipedia.org/wiki/Galaktyka', name: 'Galaktyka', category: 'p'},
+                {id: null, link: 'https://pl.wikipedia.org/wiki/Miko%C5%82aj_Kopernik', name: 'Mikołaj Kopernik', category: 'p'},
+                {id: null, link: 'https://pl.wikipedia.org/wiki/(134340)_Pluton', name: 'Pluton', category: 'p'},
+                {id: null, link: 'https://pl.wikipedia.org/wiki/Astronomia', name: 'Astronomia', category: 'p'},
+                {id: null, link: 'https://pl.wikipedia.org/wiki/Gwiazda', name: 'Gwiazda', category: 'p'},
 
             ],
         }
