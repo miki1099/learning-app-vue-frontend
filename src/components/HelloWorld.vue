@@ -2,7 +2,7 @@
   <div class="main">
     
     <userProgresHome v-if="isLoggedIn"/>
-    <div v-else>
+    <div class="center" v-else>
         <base-card mode="dark">
             <h1>Zaloguj się lub załóż konto aby zacząć się uczyć!</h1>
         </base-card>
@@ -48,5 +48,11 @@ export default {
     align-items: center;
     flex-wrap: wrap;
     width: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
 }
 </style>
