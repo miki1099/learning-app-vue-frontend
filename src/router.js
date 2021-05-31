@@ -24,6 +24,7 @@ import CuriocitySunset from './pages/curiocity/CuriocitySunset.vue'
 import store from './main.js'
 
 const router = createRouter({
+    base: '/learning-app-vue-frontend/',
     history: createWebHistory(),
     routes: [
         { path: '/', redirect: '/home' },
