@@ -8,6 +8,7 @@ import UpdateUserData from './pages/user/UpdateUserData.vue'
 import ChangePassword from './pages/user/ChangePassword.vue'
 import AdminHome from './pages/admin/AdminHome.vue'
 import CreateQuestion from './pages/admin/CreateQuestion.vue'
+import BanUser from './pages/admin/BanUser.vue'
 import HomeTest from './pages/test/HomeTest.vue'
 import Test from './pages/test/Test.vue'
 import Achievements from './pages/achievement/Achievement.vue'
@@ -45,6 +46,7 @@ const router = createRouter({
         { path: '/register', component: UserCreate, meta: { requiresUnauth: true } },
         { path: '/admin/home', component: AdminHome, meta: { requiresAdmin: true } },
         { path: '/admin/createQuestion', component: CreateQuestion, meta: { requiresAdmin: true } },
+        { path: '/admin/banUser', component: BanUser, meta: { requiresAdmin: true } },
         { path: '/:notFound(.*)', component: NotFound }
     ]
 });
