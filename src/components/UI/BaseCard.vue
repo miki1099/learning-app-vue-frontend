@@ -30,7 +30,7 @@ export default {
   border-radius: 20px;
   box-shadow: 0 2px 8px #2f2f2f;
   padding: 1rem;
-  margin: 2rem 0.5rem;
+  margin: 2rem auto;
   max-width: 65%;
   background-color: #2f2f2f;
 }
