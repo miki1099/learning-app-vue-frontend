@@ -6,5 +6,6 @@ module.exports = {
         args[0].title = 'AstroApp'
         return args
       })
-    }
+    },
+    publicPath: '/AstroApp/'
   }
