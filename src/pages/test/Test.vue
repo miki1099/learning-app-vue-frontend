@@ -165,6 +165,7 @@ export default {
           if (response.status === 401) {
             this.$router.replace('/login');
           }
+          this.error = 'Nie można załadować pytań spróbuj ponownie później!';
           throw new Error(
             'Nie można załadować pytań spróbuj ponownie później!'
           );
@@ -192,6 +193,7 @@ export default {
           if (response.status === 401) {
             this.$router.replace('/login');
           }
+          this.error = 'Nie można załadować pytań spróbuj ponownie później!';
           throw new Error(
             'Nie można załadować pytań spróbuj ponownie później!'
           );
@@ -210,6 +212,7 @@ export default {
           }
         );
         if (!responseWithQuestions.ok) {
+          this.error = 'Nie można załadować pytań spróbuj ponownie później!';
           throw new Error(
             'Nie można załadować pytań spróbuj ponownie później!'
           );

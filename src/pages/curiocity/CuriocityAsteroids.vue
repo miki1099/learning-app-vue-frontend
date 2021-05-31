@@ -51,9 +51,11 @@ export default {
             const response = await fetch('https://www.neowsapp.com/rest/v1/feed?start_date='+ date+ '&end_date=' + date+ '&detailed=false&api_key=DEMO_KEY', {
                     method: 'GET',
                 }).catch(() => {
+                  this.error = 'Nie udało się załadować. Spróbuj ponownie później!';
                     throw new Error('Nie udało się załadować. Spróbuj ponownie później!');
                 });
             if(!response.ok) {
+              this.error = 'Nie udało się załadować. Spróbuj ponownie później!';
                 throw new Error('Nie udało się załadować. Spróbuj ponownie później!');
             }
             

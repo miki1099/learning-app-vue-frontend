@@ -48,9 +48,11 @@ export default {
             const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', {
                     method: 'GET',
                 }).catch(() => {
+                     this.error = 'Nie udało się załadować. Spróbuj ponownie później!';
                     throw new Error('Nie udało się załadować. Spróbuj ponownie później!');
                 });
             if(!response.ok) {
+                this.error = 'Nie udało się załadować. Spróbuj ponownie później!';
                 throw new Error('Nie udało się załadować. Spróbuj ponownie później!');
             }
             const jsonResponse = await response.json();

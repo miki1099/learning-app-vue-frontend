@@ -8,7 +8,7 @@
             <h2>{{ title }}</h2>
           </slot>
         </header>
-        <section>
+        <section class="white">
           <slot></slot>
         </section>
         <menu v-if="!fixed">
@@ -110,6 +110,10 @@ menu {
 
 .dialog-leave-active {
   transition: all 0.3s ease-in;
+}
+
+.white {
+  color: rgb(255, 255, 255);
 }
 
 .dialog-enter-to,
