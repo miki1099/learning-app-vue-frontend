@@ -17,7 +17,6 @@
 
 <script>
 import TheBurger from '../menu/TheBurger.vue';
-
 export default {
   components: {
     TheBurger,
@@ -42,6 +41,7 @@ export default {
       this.$store.commit('logout');
       this.$store.commit('logoutUser');
       this.$router.replace('/home');
+      this.$router.go();
     },
     goToUserDetails() {
       this.$router.push('/user/me');

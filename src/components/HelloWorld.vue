@@ -1,6 +1,12 @@
 <template>
   <div class="main">
+    
     <userProgresHome v-if="isLoggedIn"/>
+    <div v-else>
+        <base-card mode="dark">
+            <h1>Zaloguj się lub załóż konto aby zacząć się uczyć!</h1>
+        </base-card>
+    </div>
     <APODHome/>
     <AsteroidsHome/>
     <SunsetTimeHome/>
@@ -12,13 +18,15 @@ import APODHome from './home/APODHome.vue'
 import AsteroidsHome from './home/AsteroidsHome.vue'
 import SunsetTimeHome from './home/SunsetTimeHome.vue'
 import userProgresHome from './home/UserProgressHome.vue'
+import BaseCard from './UI/BaseCard.vue'
 
 export default {
   components: {
     APODHome,
     AsteroidsHome,
     SunsetTimeHome,
-    userProgresHome
+    userProgresHome,
+    BaseCard
   },
   data() {
     return {

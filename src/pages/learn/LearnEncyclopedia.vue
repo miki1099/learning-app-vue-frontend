@@ -127,7 +127,8 @@ export default {
                 {id: null, link: 'https://pl.wikipedia.org/wiki/(134340)_Pluton', name: 'Pluton', category: 'p'},
                 {id: null, link: 'https://pl.wikipedia.org/wiki/Astronomia', name: 'Astronomia', category: 'p'},
                 {id: null, link: 'https://pl.wikipedia.org/wiki/Gwiazda', name: 'Gwiazda', category: 'p'},
-
+                {id: null, link: 'https://pl.wikipedia.org/wiki/Gwiazda_zmienna#:~:text=Gwiazda%20zmienna%20%E2%80%93%20gwiazda%2C%20kt%C3%B3ra%20w%20znacz%C4%85cy%20spos%C3%B3b%20zmienia%20swoj%C4%85%20jasno%C5%9B%C4%87.', name: 'Gwiazda zmienna', category: 'p'},
+                {id: null, link: 'https://pl.wikipedia.org/wiki/Teleskop', name: 'Teleskop', category: 'p'},
             ],
         }
     }, 
