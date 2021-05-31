@@ -24,9 +24,9 @@ import CuriocitySunset from './pages/curiocity/CuriocitySunset.vue'
 import store from './main.js'
 
 const router = createRouter({
-    base: '/learning-app-vue-frontend/',
     history: createWebHistory(),
     routes: [
+        // { path: '/learning-app-vue-frontend/', redirect: '/home' },
         { path: '/', redirect: '/home' },
         { path: '/home', component: HelloWorld },
         { path: '/learn', component: Learn, meta: { requiresAuth: true } },

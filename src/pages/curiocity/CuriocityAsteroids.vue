@@ -48,7 +48,7 @@ export default {
       async loadAsteroids() {
           this.isLoading = true;
           const date = new Date().toLocaleDateString('en-CA');
-            const response = await fetch('http://www.neowsapp.com/rest/v1/feed?start_date='+ date+ '&end_date=' + date+ '&detailed=false&api_key=DEMO_KEY', {
+            const response = await fetch('https://www.neowsapp.com/rest/v1/feed?start_date='+ date+ '&end_date=' + date+ '&detailed=false&api_key=DEMO_KEY', {
                     method: 'GET',
                 }).catch(() => {
                     throw new Error('Nie udało się załadować. Spróbuj ponownie później!');
