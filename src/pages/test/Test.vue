@@ -43,7 +43,8 @@
       <base-card mode="question">
         <img class="photo" :src="question.picture" />
         <p class="question-text">{{ question.questionName }}</p>
-        <p class="good-answer">{{ question.goodAnswer }}</p>
+        <p :class="{'bad-answer': question.choosed != question.goodAnswer}">Wybrana odpowiedź: {{ question.choosed }}</p>
+        <p class="good-answer">Prawidłowa odpowiedź: {{ question.goodAnswer }}</p>
       </base-card>
     </div>
   </div>
@@ -237,6 +238,8 @@ export default {
       ) {
         this.score++;
       }
+      this.questions[this.questionNumber].choosed = this.answers[questionNumberChoosed];
+      // console.log(this.questions[this.questionNumber].choosed);
       this.questionNumber++;
       if (this.questionNumber >= this.questions.length) {
         this.isEnd = true;
@@ -301,6 +304,10 @@ export default {
 
 .good-answer {
   color: #33ff00;
+}
+
+.bad-answer {
+  color: #FF3131;
 }
 
 @media (max-width: 600px) {
