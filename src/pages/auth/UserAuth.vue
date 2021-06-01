@@ -39,6 +39,13 @@
 <script>
 import BaseDialog from '../../components/UI/BaseDialog.vue';
 export default {
+  created() {
+    console.log(localStorage.loginBuf);
+    if(localStorage.loginBuf  !== null) {
+      this.login = localStorage.loginBuf;
+      localStorage.loginBuf = "";
+    }
+  },
   components: { BaseDialog },
   data() {
     return {

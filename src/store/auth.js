@@ -110,6 +110,8 @@ export default {
                 }
                 throw error;
             }
+
+            localStorage.setItem('loginBuf', payload.login);
         },
         async tryLogIn(context) {
             const token = localStorage.getItem('token');
