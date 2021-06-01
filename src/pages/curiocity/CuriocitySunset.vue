@@ -12,11 +12,11 @@
         <br>
         <form @submit.prevent="getSunset(latitudeBuf, longitudeBuf)">
                 <div class="user-box">
-                <input type="number" step="0.000001" name="" required="" v-model="latitudeBuf" class="valid">
+                <input type="number" step="any" name="" required="" v-model="latitudeBuf" class="valid">
                 <label>Szerokość</label>
             </div>
             <div class="user-box">
-                <input type="number" step="0.000001" name="" required="" v-model="longitudeBuf" class="valid">
+                <input type="number" step="any" name="" required="" v-model="longitudeBuf" class="valid">
                 <label>Długość</label>
             </div>
             <base-button>Zatwierdź</base-button>
@@ -206,6 +206,8 @@ export default {
             await navigator.geolocation.getCurrentPosition(pos => {
                 this.latitude = pos.coords.latitude;
                 this.longitude = pos.coords.longitude;
+                this.latitudeBuf = this.latitude;
+                this.longitudeBuf = this.longitude;
                 this.isAutomaticLocationGet = true;
                 this.getSunset(this.latitude, this.longitude);
             }, () => {
