@@ -8,7 +8,7 @@
             <p v-if="!isFormValid">{{ invalidFormMessage }}</p>
             <div class="user-box">
                 <input type="text" name="" required="" v-model="login" :class="{invalid: !isFormValid, valid: isFormValid}">
-                <label>Login</label>
+                <label>Login (minimum 6 znaków, bez polskich znaków)</label>
             </div>
             <div class="user-box">
                 <input type="email" name="" required="" v-model="email" :class="{invalid: !isFormValid, valid: isFormValid}">
@@ -16,7 +16,7 @@
             </div>
             <div class="user-box">
                 <input type="password" name="" required="" v-model="password" :class="{invalid: !isFormValid, valid: isFormValid}">
-                <label>Hasło</label>
+                <label>Hasło (minimum 8 znaków, bez polskich znaków)</label>
             </div>
             <div class="user-box">
                 <input type="password" name="" required="" v-model="passwordAgain" :class="{invalid: !isFormValid, valid: isFormValid}">
