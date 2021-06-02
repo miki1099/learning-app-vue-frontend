@@ -21,7 +21,7 @@ import CuriocityHome from './pages/curiocity/CuriocityHome.vue'
 import CuriocityApod from './pages/curiocity/CuriocityApod.vue'
 import CuriocityAsteroids from './pages/curiocity/CuriocityAsteroids.vue'
 import CuriocitySunset from './pages/curiocity/CuriocitySunset.vue'
-
+import Credits from './pages/Credits.vue'
 import store from './main.js'
 
 const router = createRouter({
@@ -43,6 +43,7 @@ const router = createRouter({
         { path: '/curiocity', component: CuriocityHome },
         { path: '/curiocity/apod', component: CuriocityApod },
         { path: '/curiocity/asteroids', component: CuriocityAsteroids },
+        { path: '/credits', component: Credits },
         { path: '/curiocity/sunsetTime', component: CuriocitySunset },
         { path: '/login', component: UserAuth, meta: { requiresUnauth: true } },
         { path: '/register', component: UserCreate, meta: { requiresUnauth: true } },
