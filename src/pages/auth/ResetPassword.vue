@@ -1,61 +1,44 @@
 <template>
-  <div class="login-box">
     <base-dialog :show="!!error" title="Error" @close="handleError">
       <p>{{ error }}</p>
     </base-dialog>
-    <h2>Logowanie</h2>
-    <form @submit.prevent="submitMethod()">
-      <p v-if="!isFormValid">Login/Email albo hasło są za krótkie!</p>
-      <div class="user-box">
-        <input
-          type="text"
-          name=""
-          required=""
-          v-model="login"
-          :class="{ invalid: !isFormValid, valid: isFormValid }"
-        />
-        <label>Login/Email</label>
-      </div>
-      <div class="user-box">
-        <input
-          type="password"
-          name=""
-          required=""
-          v-model="password"
-          :class="{ invalid: !isFormValid, valid: isFormValid }"
-        />
-        <label>Hasło</label>
-      </div>
-      <base-spinner v-if="isLoading"></base-spinner>
-      <button>Zaloguj się</button>
-      <br />
-      <button class="sign-up">
-        <router-link to="/register"> Zarejestruj się </router-link>
-      </button>
-      <br/>
-      <button class="sign-up">
-        <router-link to="/forgotPassword"> Nie pamiętasz hasła? </router-link>
-      </button>
-    </form>
-  </div>
+    <div class="login-box" v-if="!isGood">
+        <h2>Nie pamiętasz hasła?</h2>
+        <h4>Wpisz swój email poniżej, a dostaniesz emaila zawierającego zresetowane hasło.</h4>
+        <form @submit.prevent="submitMethod()">
+        <p v-if="!isFormValid">Email jest za krótki!</p>
+        <div class="user-box">
+            <input
+            type="email"
+            name=""
+            required=""
+            v-model="email"
+            :class="{ invalid: !isFormValid, valid: isFormValid }"
+            />
+            <label>Email</label>
+        </div>
+        <base-spinner v-if="isLoading"></base-spinner>
+        <base-button>Zresetuj hasło</base-button>
+        </form>
+    </div>
+    <div v-else>
+        <h2>Udało się zmienić hasło!</h2>
+        <h3>Na emailu czeka na ciebie nowe zresetowane hasło.</h3>
+        <h3>Po zalogowaniu wejdź w zakładkę dane użytkownika zaby zmienić hasło na swoje.</h3>
+        <base-button>
+            <router-link to="/login">Zaloguj się</router-link>
+        </base-button>
+    </div>
 </template>
 
 <script>
-import BaseDialog from '../../components/UI/BaseDialog.vue';
 export default {
-  created() {
-    console.log(localStorage.loginBuf);
-    if(localStorage.loginBuf  !== null) {
-      this.login = localStorage.loginBuf;
-      localStorage.loginBuf = "";
-    }
-  },
-  components: { BaseDialog },
-  data() {
+    data() {
     return {
-      login: '',
-      password: '',
+  
+      email: '',
       isFormValid: true,
+      isGood: false,
       isLoading: false,
       error: null,
     };
@@ -63,34 +46,24 @@ export default {
   methods: {
     async submitMethod() {
       this.isLoading = true;
-      this.isFormValid = true;
-      if (this.login === '' || this.password.length < 6) {
-        this.isFormValid = false;
-        this.isLoading = false;
-        return;
-      }
+      const response = await fetch('https://learning-app-stars.herokuapp.com/forgotPassword?email=' + this.email, {
+                    method: 'PUT',
+                });
 
-      try {
-        await this.$store.dispatch('login', {
-          login: this.login,
-          password: this.password,
-        });
-        await this.$store.dispatch('saveUser');
-      } catch (err) {
-        this.error = err.message;
-        this.isLoading = false;
-        return;
+      if(!response.ok) {
+          if(response.status === 404) {
+            this.error = 'Użytkownik o podanym emailu nie istnieje!';
+          } else {
+            this.error = 'Nie udało sie wykonać akcji, spróbuj pownownie później!'
+          }
+      } else {
+        this.isGood = true;
       }
       this.isLoading = false;
-      this.$router.replace('/home');
-    },
-    handleError() {
-      this.error = null;
-    },
-  },
-};
+    }
+  }
+}
 </script>
-
 
 <style scoped>
 p {
@@ -171,22 +144,22 @@ a {
   letter-spacing: 4px;
 }
 
-.sign-up {
+#sign-up {
   color: #03e9f4;
 }
 button {
   border: none;
   background: none;
 }
-.sign-up:hover {
+.login-box button:hover {
+  background: #03e9f4;
+  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4;
+}
+
+#sign-up:hover {
   background: #ef3dff;
   border-radius: 5px;
   box-shadow: 0 0 5px #ef3dff, 0 0 25px #ef3dff, 0 0 50px #ef3dff;
-}
-
-.login-box button:hover:not(.sign-up) {
-  background: #03e9f4;
-  box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4;
 }
 
 @media (max-width: 600px) {
