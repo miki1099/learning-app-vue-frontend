@@ -28,7 +28,7 @@ export default {
         async getPhoto() {
             this.isLoading = true;
 
-            const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', {
+            const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=99LaV7JpFe2ObOwzsdumuGhR5qMHKnP1nHvuq1VX', {
                     method: 'GET',
                 }).catch( () => {
                     this.isGood = false;

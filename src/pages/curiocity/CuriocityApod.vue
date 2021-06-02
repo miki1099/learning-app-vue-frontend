@@ -45,7 +45,7 @@ export default {
         async getApod() {
             this.isLoading = true;
 
-            const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY', {
+            const response = await fetch('https://api.nasa.gov/planetary/apod?api_key=99LaV7JpFe2ObOwzsdumuGhR5qMHKnP1nHvuq1VX', {
                     method: 'GET',
                 }).catch(() => {
                      this.error = 'Nie udało się załadować. Spróbuj ponownie później!';

@@ -26,7 +26,7 @@ export default {
         async getAsteroidCount() {
             this.isLoading = true;
           const date = new Date().toLocaleDateString('en-CA');
-            const response = await fetch('https://www.neowsapp.com/rest/v1/feed?start_date='+ date+ '&end_date=' + date+ '&detailed=false&api_key=DEMO_KEY', {
+            const response = await fetch('https://www.neowsapp.com/rest/v1/feed?start_date='+ date+ '&end_date=' + date+ '&detailed=false&api_key=99LaV7JpFe2ObOwzsdumuGhR5qMHKnP1nHvuq1VX', {
                     method: 'GET',
                 }).catch(() => {
                     this.isGood = false;

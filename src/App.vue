@@ -41,7 +41,6 @@ html {
   background-color: #303133;
   font-size: 20px;
 }
-
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

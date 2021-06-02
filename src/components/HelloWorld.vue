@@ -4,7 +4,7 @@
     <userProgresHome v-if="isLoggedIn"/>
     <div class="center" v-else>
         <base-card mode="dark">
-            <h1>Zaloguj się lub załóż konto aby zacząć się uczyć!</h1>
+            <h1>Zaloguj się lub załóż konto, aby zacząć się uczyć!</h1>
         </base-card>
     </div>
     <APODHome/>

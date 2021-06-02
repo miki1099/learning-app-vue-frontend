@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HelloWorld from './components/HelloWorld.vue';
 import UserAuth from './pages/auth/UserAuth.vue'
+import ResetPassword from './pages/auth/ResetPassword.vue'
 import UserCreate from './pages/auth/UserCreate.vue'
 import NotFound from './pages/notFound/NotFound.vue'
 import UserInfo from './pages/user/UserInfo.vue'
@@ -45,6 +46,7 @@ const router = createRouter({
         { path: '/curiocity/sunsetTime', component: CuriocitySunset },
         { path: '/login', component: UserAuth, meta: { requiresUnauth: true } },
         { path: '/register', component: UserCreate, meta: { requiresUnauth: true } },
+        { path: '/forgotPassword', component: ResetPassword, meta: { requiresUnauth: true } },
         { path: '/admin/home', component: AdminHome, meta: { requiresAdmin: true } },
         { path: '/admin/createQuestion', component: CreateQuestion, meta: { requiresAdmin: true } },
         { path: '/admin/banUser', component: BanUser, meta: { requiresAdmin: true } },

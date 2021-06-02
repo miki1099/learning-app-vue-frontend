@@ -7,13 +7,16 @@
     </div>
     <div class="list">
         <div v-for="obj in showArray" :key="obj.name">
-            <a :class="{blueHover: obj.id % 2 === 1}" :href="obj.link" target="_blank">{{ obj.name }}</a>
+            <!-- <a :class="{blueHover: obj.id % 2 === 1}" :href="obj.link" target="_blank">{{ obj.name }}</a> -->
+            <base-card mode="dark"><a :class="{blueHover: obj.id % 2 === 1}" :href="obj.link" target="_blank">{{ obj.name }}</a></base-card>
         </div>
     </div>
 </template>
 
 <script>
+import BaseCard from '../../components/UI/BaseCard.vue';
 export default {
+  components: { BaseCard },
     data() {
         return {
             //  {id: null, link: '', name: '', category: 'k'},
@@ -262,19 +265,23 @@ a {
     color: #e9e9e9;
     margin: 0 30px;
     border-radius: 10px;
-    border-style: dashed;
-    border-color: #e9e9e9;
+    border-style: solid;
+    border-color: transparent;
     border-width: 2px;
+    transition: 0.4s;
 }
 a:hover {
     color:#ef3dff;
     border-color: #ef3dff;
     background-color: #242424;
+    box-shadow: 0 0 5px #ef3dff, 0 0 25px #ef3dff, 0 0 50px #ef3dff;
+    
 }
 
 .blueHover:hover {
     color:#03e9f4;
     border-color: #03e9f4;
+    box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4;
 }
 
 @media (max-width: 300px) {
