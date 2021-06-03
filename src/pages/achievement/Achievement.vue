@@ -18,13 +18,13 @@
       </tr>
     </table>
   </div>
-  <div class="nav" v-if="!isLoading" >
+  <div class="nav" v-if="!isLoading && maxSiteNumber != 0" >
     <span :class="{disable: currentPage === 0}" @click="navMethod(currentPage - 1)">poprzednia strona</span>
     <span :class="{disable: currentPage === 0}" @click="navMethod(0)">1</span>
     <div v-for="pageNumber in pageChange" :key="pageNumber">
       <span :class="{disable: pageNumber === currentPage+1}" @click="navMethod(pageNumber-1)">{{ pageNumber }}</span>
     </div>
-    <span :class="{disable: currentPage === maxSiteNumber-1}" @click="navMethod(maxSiteNumber - 1)">{{ maxSiteNumber }}</span>
+    <span v-if="maxSiteNumber != 1" :class="{disable: currentPage === maxSiteNumber-1}" @click="navMethod(maxSiteNumber - 1)">{{ maxSiteNumber }}</span>
     <span :class="{disable: currentPage === maxSiteNumber-1}" @click="navMethod(currentPage + 1)">następna strona</span>
   </div>
 </template>
@@ -141,6 +141,10 @@ export default {
       this.$router.push('/home');
     },
     navMethod(page) {
+      if(page === -1 || page === 0 && this.currentPage === 0 || page === this.maxSiteNumber || this.currentPage === this.maxSiteNumber -1 && page === this.maxSiteNumber -1) {
+        return;
+      }
+
       this.currentPage = page;
       if (this.orderByDate === false) {
         this.loadScoreList(false, this.scoreAsc, this.currentPage);
