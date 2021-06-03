@@ -10,21 +10,23 @@
         <th class="sort-by pointer" @click="sortByScore">Wynik</th>
         <th class="sort-by pointer" @click="sortByDate">Data</th>
         <th>Kategoria</th>
+        <th>Czas testu [s]</th>
       </tr>
       <tr v-for="score in scoreList" :key="score.id">
         <td>{{ score.score }}</td>
         <td>{{ score.scoreDate }}</td>
         <td>{{ score.category }}</td>
+        <td>{{ score.testTime }}</td>
       </tr>
     </table>
   </div>
-  <div class="nav" v-if="!isLoading" >
+  <div class="nav" v-if="!isLoading && maxSiteNumber != 0" >
     <span :class="{disable: currentPage === 0}" @click="navMethod(currentPage - 1)">poprzednia strona</span>
     <span :class="{disable: currentPage === 0}" @click="navMethod(0)">1</span>
     <div v-for="pageNumber in pageChange" :key="pageNumber">
       <span :class="{disable: pageNumber === currentPage+1}" @click="navMethod(pageNumber-1)">{{ pageNumber }}</span>
     </div>
-    <span :class="{disable: currentPage === maxSiteNumber-1}" @click="navMethod(maxSiteNumber - 1)">{{ maxSiteNumber }}</span>
+    <span v-if="maxSiteNumber != 1" :class="{disable: currentPage === maxSiteNumber-1}" @click="navMethod(maxSiteNumber - 1)">{{ maxSiteNumber }}</span>
     <span :class="{disable: currentPage === maxSiteNumber-1}" @click="navMethod(currentPage + 1)">następna strona</span>
   </div>
 </template>
@@ -141,6 +143,10 @@ export default {
       this.$router.push('/home');
     },
     navMethod(page) {
+      if(page === -1 || page === 0 && this.currentPage === 0 || page === this.maxSiteNumber || this.currentPage === this.maxSiteNumber -1 && page === this.maxSiteNumber -1) {
+        return;
+      }
+
       this.currentPage = page;
       if (this.orderByDate === false) {
         this.loadScoreList(false, this.scoreAsc, this.currentPage);
@@ -161,6 +167,7 @@ export default {
   margin: 50px auto;
   padding: 0 50px;
   max-width: 960px;
+  overflow-x: auto;
 }
 table {
   border-collapse: collapse;
@@ -254,5 +261,13 @@ tr:nth-child(odd):hover {
     font-size: 1.5rem;
     margin: 10px 0;
   }
+}
+
+@media (max-width: 420px) {
+  .score-table {
+  padding: 0 0px;
+}
+
+
 }
 </style>
