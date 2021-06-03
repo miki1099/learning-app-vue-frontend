@@ -10,11 +10,13 @@
         <th class="sort-by pointer" @click="sortByScore">Wynik</th>
         <th class="sort-by pointer" @click="sortByDate">Data</th>
         <th>Kategoria</th>
+        <th>Czas testu [s]</th>
       </tr>
       <tr v-for="score in scoreList" :key="score.id">
         <td>{{ score.score }}</td>
         <td>{{ score.scoreDate }}</td>
         <td>{{ score.category }}</td>
+        <td>{{ score.testTime }}</td>
       </tr>
     </table>
   </div>
@@ -165,6 +167,7 @@ export default {
   margin: 50px auto;
   padding: 0 50px;
   max-width: 960px;
+  overflow-x: auto;
 }
 table {
   border-collapse: collapse;
@@ -258,5 +261,13 @@ tr:nth-child(odd):hover {
     font-size: 1.5rem;
     margin: 10px 0;
   }
+}
+
+@media (max-width: 420px) {
+  .score-table {
+  padding: 0 0px;
+}
+
+
 }
 </style>

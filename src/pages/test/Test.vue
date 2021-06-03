@@ -3,6 +3,7 @@
     <p>{{ error }}</p>
   </base-dialog>
   <base-spinner v-if="isLoading"></base-spinner>
+  <label v-if="!isLoading">Czas testu: {{ formattedElapsedTime }} s</label>
   <base-card mode="question" v-if="!isLoading && !isEnd">
     <img class="photo" :src="questions[questionNumber].picture" />
     <p class="question-text">{{ questions[questionNumber].questionName }}</p>
@@ -57,7 +58,7 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
-async function saveScore(score, questionAmount, token, mode) {
+async function saveScore(score, questionAmount, token, mode, testTime) {
   let category = null;
   if (mode === 'constelations') {
     category = 'Konstelacje gwiezdne';
@@ -79,7 +80,9 @@ async function saveScore(score, questionAmount, token, mode) {
     'https://learning-app-stars.herokuapp.com/score/create/' +
       scoreInPercentage +
       '?category=' +
-      category,
+      category + 
+      '&testTime=' +
+      testTime,
     {
       method: 'POST',
       headers: headers,
@@ -126,6 +129,8 @@ export default {
       isEnd: false,
       score: 0,
       error: null,
+      elapsedTime: 0,
+      timer: undefined,
     };
   },
   created() {
@@ -136,6 +141,14 @@ export default {
     }
   },
   methods: {
+    start() {
+      this.timer = setInterval(() => {
+        this.elapsedTime += 10;
+      }, 10);
+    },
+    stop() {
+      clearInterval(this.timer);
+    },
     async getQuestions() {
       this.isLoading = true;
       let category = null;
@@ -229,6 +242,7 @@ export default {
 
         this.answers = shuffle(ans);
       }
+      this.start();
       this.isLoading = false;
     },
     nextQuestion(questionNumberChoosed) {
@@ -239,9 +253,9 @@ export default {
         this.score++;
       }
       this.questions[this.questionNumber].choosed = this.answers[questionNumberChoosed];
-      // console.log(this.questions[this.questionNumber].choosed);
       this.questionNumber++;
       if (this.questionNumber >= this.questions.length) {
+        this.stop();
         this.isEnd = true;
         this.isLoading = true;
         try {
@@ -249,7 +263,8 @@ export default {
             this.score,
             this.questions.length,
             this.$store.getters.getToken,
-            this.$route.params.mode
+            this.$route.params.mode,
+            this.elapsedTime/1000
           );
         } catch (ex) {
           this.error = ex.message;
@@ -275,6 +290,18 @@ export default {
       this.$router.push('/learn');
     }
   },
+  computed: {
+    formattedElapsedTime() {
+      let milisecPart;
+      if(this.elapsedTime%1000 < 100) {
+        milisecPart = '0' + this.elapsedTime%1000;
+      } else {
+        milisecPart = this.elapsedTime%1000;
+      }
+      
+      return (this.elapsedTime-this.elapsedTime%1000)/1000 + ':' + milisecPart;
+    }
+  }
 };
 </script>
 
