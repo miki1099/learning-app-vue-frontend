@@ -64,7 +64,7 @@ export default {
             this.explanation = jsonResponse.explanation;
             this.title = jsonResponse.title;
             this.fullResUrl = jsonResponse.hdurl;
-            const responseInPolish = await fetch("https://api-free.deepl.com/v2/translate?text=" + jsonResponse.explanation+"&target_lang=PL&auth_key=176e7b50-265d-7c1a-7f29-4ca842660fc7:fx", {
+            const responseInPolish = await fetch("https://api-free.deepl.com/v2/translate?text=" + jsonResponse.explanation+"&target_lang=PL&auth_key=383d50c9-7013-84bb-f0c8-11f3b7453022:fx", {
                 "method": "POST",
             })
 
